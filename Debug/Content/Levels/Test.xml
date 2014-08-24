@@ -1,0 +1,78 @@
+<Level>
+	<!-- floor -->
+	<Platform>
+		<Transform>
+			<Position>		<X>0</X> <Y>-3</Y> <Z>0</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>0.15</Y> <Z>3</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<Platform>
+		<Transform>
+			<Position>		<X>0</X> <Y>-3</Y> <Z>-6</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>0.15</Y> <Z>3</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<Platform>
+		<Transform>
+			<Position>		<X>-6</X> <Y>-3</Y> <Z>0</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>0.15</Y> <Z>3</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<Platform>
+		<Transform>
+			<Position>		<X>-6</X> <Y>-3</Y> <Z>-6</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>0.15</Y> <Z>3</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<!-- walls -->
+	<Platform>
+		<Transform>
+			<Position>		<X>0</X> <Y>-3</Y> <Z>-9</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>3</Y> <Z>0.15</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<Platform>
+		<Transform>
+			<Position>		<X>-6</X> <Y>-3</Y> <Z>-9</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>3</Y> <Z>0.15</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<!-- platform -->
+	<Platform>
+		<Transform>
+			<Position>		<X>-6</X> <Y>0</Y> <Z>-6</Z> </Position>
+			<Orientation>	<X>0</X> <Y>0</Y> <Z>0</Z> </Orientation>
+			<Scale>			<X>3</X> <Y>0.15</Y> <Z>3</Z> </Scale>
+		</Transform>
+	</Platform>
+	
+	<!-- Light -->
+	<Light>
+		<LightID>0</LightID>
+		<Position>		<X>0</X> <Y>-1</Y> <Z>0</Z> </Position>
+		<Ambient>		<R>0.8</R> <G>0.8</G> <B>0.8</B> <A>1.0</A> </Ambient>
+		<Specular>		<R>1.0</R> <G>1.0</G> <B>1.0</B> <A>1.0</A> </Specular>
+		<Diffuse>		<R>1.0</R> <G>0.2</G> <B>0.2</B> <A>1.0</A> </Diffuse>
+	</Light>
+	
+	<Light>
+		<LightID>1</LightID>
+		<Position>		<X>3</X> <Y>-1</Y> <Z>0</Z> </Position>
+		<Ambient>		<R>0.8</R> <G>0.8</G> <B>0.8</B> <A>1.0</A> </Ambient>
+		<Specular>		<R>1.0</R> <G>1.0</G> <B>1.0</B> <A>1.0</A> </Specular>
+		<Diffuse>		<R>0.2</R> <G>1.0</G> <B>0.2</B> <A>1.0</A> </Diffuse>
+	</Light>
+	
+</Level>

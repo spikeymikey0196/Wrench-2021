@@ -1,0 +1,9 @@
+<Content>
+	<Texture Name="Adiantum" Filename="./Content/Models/Adiantum/Adiantum D.png" />
+	<Model Name="Adiantum" Texture="Adiantum" Filename="./Content/Models/Adiantum/Adiantum.obj" />
+	
+	<Model Name="Sora" Texture="" Filename="./Content/Models/Sora/Sora.obj" />
+	<Model Name="Lightbulb" Texture="" Filename="./Content/Models/Lightbulb/Lightbulb.obj" />
+	
+	<Shader Name="Red" Vert="./Content/Shaders/Red/v.glsl" Frag="./Content/Shaders/Red/f.glsl" />
+</Content>
