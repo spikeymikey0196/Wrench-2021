@@ -25,14 +25,18 @@
 #include "SkyBox.h"
 #include "TCPSocket.h"
 #include "TCPSocketSet.h"
+#include "Terrain.h"
 #include "Texture.h"
 #include "Transform.h"
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Vector4.h"
 #include "Vertex.h"
+#include "VertexArray.h"
 #include "Viewport.h"
+#include "Water.h"
 #include "WMath.h"
+#include "WorldChunkNode.h"
 
 #include "tinyxml.h"
 
@@ -44,6 +48,7 @@ namespace Wrench
 	void PushScene(Scene *nScene);
 	void PopScene();
 	Scene *CurrentScene();
+	unsigned int GetTicks();
 }
 
 #endif

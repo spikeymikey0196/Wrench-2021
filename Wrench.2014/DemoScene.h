@@ -24,9 +24,13 @@ protected:
 	list<Light*> lights;
 	Node *skybox;
 
+	list<WorldChunkNode*> worldChunks;
+
 	list<Node *> clutter;
 
 	HealthBar *healthbar;
+
+	WorldChunkNode *chunk;
 
 	void Load(const char *filename);
 

@@ -71,10 +71,12 @@ namespace Wrench
 
 	void Node::Render(const Matrix &worldMatrix)
 	{
+		Matrix m = transform.GetMatrix() * worldMatrix;
+
 		//override by child classes
 
 		for (auto it : children)
-			it->Render(worldMatrix);
+			it->Render(m);
 	};
 
 	void Node::Update(unsigned int Delta)
@@ -88,7 +90,10 @@ namespace Wrench
 	Node *Node::AddChild(Node *child)
 	{
 		if (find(children.begin(), children.end(), child) == children.end())
+		{
+			child->parent = this;
 			children.push_back(child);
+		}
 		return child;
 	};
 
@@ -100,6 +105,7 @@ namespace Wrench
 
 	void Node::RemoveChild(Node*child)
 	{
+		child->parent = NULL;
 		children.remove(child);
 	};
 

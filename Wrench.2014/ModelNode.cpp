@@ -60,9 +60,11 @@ namespace Wrench
 
 	void ModelNode::Render(const Matrix &worldMatrix)
 	{
+		Matrix m = transform.GetMatrix() * worldMatrix;
+
 		if (model)
-			model->Render(transform.GetMatrix() * worldMatrix);
-		Node::Render(transform.GetMatrix() * worldMatrix);
+			model->Render(m);
+		Node::Render(m);
 	};
 
 	void ModelNode::Update(unsigned int Delta)

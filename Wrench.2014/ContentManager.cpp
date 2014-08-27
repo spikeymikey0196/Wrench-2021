@@ -56,6 +56,45 @@ namespace Wrench
 
 						AddModel(name, new ModelObj(mFile.c_str(), GetTexture(tName)));
 					}
+					else if (!valueStr.compare("Terrain"))
+					{
+						entry->QueryStringAttribute("Name", &name);
+						string t0 = "";
+						string t1 = "";
+						string t2 = "";
+						string t3 = "";
+						string controller = "";
+						string heightmap = "";
+
+						XmlLoop(entry, tEntry)
+						{
+							valueStr = tEntry->ValueStr();
+
+							if (!valueStr.compare("Terrain"))
+								controller = tEntry->GetText();
+							else if (!valueStr.compare("Texture"))
+							{
+								int id = 0;
+								tEntry->QueryIntAttribute("ID", &id);
+
+								switch (id)
+								{
+								case 0: t0 = tEntry->GetText(); break;
+								case 1: t1 = tEntry->GetText(); break;
+								case 2: t2 = tEntry->GetText(); break;
+								case 3: t3 = tEntry->GetText(); break;
+								default: break;
+								}
+							}
+							else if (!valueStr.compare("Heightmap"))
+							{
+								heightmap = tEntry->GetText();
+							}
+							else {}
+						}
+
+						AddTerrain(name, new Terrain(heightmap, GetTexture(controller), GetTexture(t0), GetTexture(t1), GetTexture(t2), GetTexture(t3)));
+					}
 					else{}
 				}
 
@@ -102,6 +141,19 @@ namespace Wrench
 	{
 		if (shaders[name])
 			return shaders[name];
+		return NULL;
+	};
+
+	Terrain *ContentManager::AddTerrain(string name, Terrain *t)
+	{
+		terrain[name] = t;
+		return GetTerrain(name);
+	};
+
+	Terrain *ContentManager::GetTerrain(string name)
+	{
+		if (terrain[name])
+			return terrain[name];
 		return NULL;
 	};
 

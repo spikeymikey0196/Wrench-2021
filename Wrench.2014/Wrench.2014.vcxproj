@@ -114,6 +114,7 @@
     <ClCompile Include="stb_image_aug.c" />
     <ClCompile Include="TCPSocket.cpp" />
     <ClCompile Include="TCPSocketSet.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp" />
@@ -123,8 +124,11 @@
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
+    <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="Viewport.cpp" />
+    <ClCompile Include="Water.cpp" />
     <ClCompile Include="WMath.cpp" />
+    <ClCompile Include="WorldChunkNode.cpp" />
     <ClCompile Include="Wrench.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +170,7 @@
     <ClInclude Include="stb_image_aug.h" />
     <ClInclude Include="TCPSocket.h" />
     <ClInclude Include="TCPSocketSet.h" />
+    <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Transform.h" />
@@ -175,8 +180,11 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector4.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Viewport.h" />
+    <ClInclude Include="Water.h" />
     <ClInclude Include="WMath.h" />
+    <ClInclude Include="WorldChunkNode.h" />
     <ClInclude Include="Wrench.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

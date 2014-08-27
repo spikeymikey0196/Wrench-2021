@@ -1,3 +1,4 @@
+#include <Windows.h>
 #include "Wrench.h"
 #include "SDL_net.h"
 #include <stack>
@@ -41,5 +42,10 @@ namespace Wrench
 		if (sceneStack.size() > 0)
 			return sceneStack.top();
 		return NULL;
+	};
+
+	unsigned int GetTicks()
+	{
+		return timeGetTime();
 	};
 }

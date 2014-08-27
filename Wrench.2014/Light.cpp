@@ -27,7 +27,7 @@ namespace Wrench
 	Light::Light(int nLightNum, Vector3 nPosition, Color4 nAmbient, Color4 nSpecular, Color4 nDiffuse)
 	{
 		lightNum = nLightNum;
-		position = Vector4(nPosition, 1);
+		position = Vector4(nPosition, 0);
 		ambient = nAmbient;
 		specular = nSpecular;
 		diffuse = nDiffuse;
@@ -55,11 +55,14 @@ namespace Wrench
 
 	void Light::Enable()
 	{
+		glEnable(GL_LIGHTING);
+		glEnable(GL_LIGHT0 + lightNum);
+		glEnable(GL_COLOR_MATERIAL);
+
 		glLightfv(GL_LIGHT0 + lightNum, GL_AMBIENT, ambient.color);
 		glLightfv(GL_LIGHT0 + lightNum, GL_DIFFUSE, diffuse.color);
 		glLightfv(GL_LIGHT0 + lightNum, GL_SPECULAR, specular.color);
 		glLightfv(GL_LIGHT0 + lightNum, GL_POSITION, position.pos);
-		glEnable(GL_LIGHT0 + lightNum);
 	};
 
 	void Light::Disable()

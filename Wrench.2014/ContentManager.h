@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "Texture.h"
 #include "Shader.h"
+#include "Terrain.h"
 
 #include <map>
 #include <string>
@@ -18,6 +19,7 @@ namespace Wrench
 		map<string, Model *> models;
 		map<string, Texture *> textures;
 		map<string, Shader*> shaders;
+		map<string, Terrain *> terrain;
 
 		Texture *blank;
 
@@ -34,6 +36,9 @@ namespace Wrench
 
 		Shader *AddShader(string name, Shader *s);
 		Shader *GetShader(string name);
+
+		Terrain *AddTerrain(string name, Terrain *t);
+		Terrain *GetTerrain(string name);
 	};
 }
 

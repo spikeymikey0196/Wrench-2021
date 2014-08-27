@@ -45,6 +45,8 @@ DemoScene::DemoScene()
 
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+
+	//worldChunks.push_back(new WorldChunkNode(this, content->GetTerrain("Demo"), new Water(64, 64, 1.0f, content->GetTexture("Water"))));
 };
 
 void DemoScene::Load(const char *filename)
@@ -67,6 +69,31 @@ void DemoScene::Load(const char *filename)
 			{
 				lights.push_back(new Light(entry));
 			}
+			else if (!valueStr.compare("WorldChunk"))
+			{
+				string terrainName = "";
+				Vector3 position = Vector3::Zero();
+				float waterHeight = FLT_MIN;
+
+				entry->QueryStringAttribute("TerrainName", &terrainName);
+				
+				XmlLoop(entry, chunkEntry)
+				{
+					valueStr = chunkEntry->ValueStr();
+
+					if (!valueStr.compare("Position"))
+					{
+						position = Vector3(chunkEntry);
+					}
+					else if (!valueStr.compare("WaterHeight"))
+					{
+						waterHeight = stof(chunkEntry->GetText());
+					}
+					else {}
+				}
+
+				worldChunks.push_back(new WorldChunkNode(this, position, content->GetTerrain(terrainName), waterHeight, content->GetTexture("Water")));
+			}
 			else
 			{
 				//
@@ -83,11 +110,32 @@ void DemoScene::Draw()
 
 	for (auto it : lights)
 		it->Enable();
+	
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_COLOR_MATERIAL);
+	
+	float LightPos[4] = { 1.0f, 1.0f, 1.0f, 0.0f };
+	float Ambient[4] = { 0.2f, 0.2f, 0.2f, 1.0f };
+	float diffuse[4] = { 1.0, 1.0, 1.0, 1.0 };
+	float specular[4] = { 1.0, 1.0, 1.0, 1.0 };
 
+	glLightfv(GL_LIGHT0, GL_POSITION, LightPos);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, Ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	
+	
 	skybox->Render(camera.GetMatrix());
+	
+//	for (auto it : nodes)
+//		it->Render(camera.GetMatrix());
 
-	for (auto it : nodes)
-		it->Render(camera.GetMatrix());
+	for (auto it : worldChunks)
+		it->RenderTerrain(camera.GetMatrix());
+
+	for (auto it : worldChunks)
+		it->RenderChildren(camera.GetMatrix());
 
 	for (auto it : platforms)
 		it->Render(camera.GetMatrix());
@@ -96,6 +144,9 @@ void DemoScene::Draw()
 		it->Render(camera.GetMatrix());
 
 	player->Render(camera.GetMatrix());
+
+	for (auto it : worldChunks)
+		it->RenderWater(camera.GetMatrix());
 
 	for (auto it: lights)
 		it->Disable();
@@ -113,6 +164,22 @@ void DemoScene::Update(unsigned int Delta)
 {
 	player->Update(Delta);
 	player->CollidePlatforms(&platforms);
+
+	for (auto it : worldChunks)
+	{
+		if (player->GetBounds().Intersects(it->GetBounds()))
+		{
+			float height = it->GetTerrainHeight(player->GetTransform()->Position());
+
+			if (height != FLT_MIN)
+			{
+				Vector3 v = player->GetTransform()->Position();
+				v.y = height;
+				player->GetTransform()->SetPosition(v);
+				break;
+			}
+		}
+	}
 
 	camera.SetFocus(player->GetTransform()->Position() + Vector3(0,1.5,0));
 	camera.SetEye(player->GetTransform()->Position() + player->GetTransform()->GetMatrix().Backward() * 5.0f + Vector3(0,2,0));

@@ -13,6 +13,10 @@ namespace Wrench
 {
 	class Shader
 	{
+	private:
+		static Shader *defaultTerrain;
+		static Shader *defaultWater;
+
 	protected:
 		GLuint vShader;
 		GLuint fShader;
@@ -24,9 +28,13 @@ namespace Wrench
 		Shader(const char *vFile, const char *fFile);
 		Shader(TiXmlElement *entry);
 		bool Load(const char *vFile, const char *fFile);
+		bool LoadFromStrings(const string &vContents, const string &fContents);
 		void Bind();
 		void Unbind();
 		GLuint GetUniform(const char *name);
+
+		static Shader *DefaultTerrain();
+		static Shader *DefaultWater();
 	};
 };
 

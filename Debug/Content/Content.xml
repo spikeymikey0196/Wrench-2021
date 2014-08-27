@@ -6,4 +6,23 @@
 	<Model Name="Lightbulb" Texture="" Filename="./Content/Models/Lightbulb/Lightbulb.obj" />
 	
 	<Shader Name="Red" Vert="./Content/Shaders/Red/v.glsl" Frag="./Content/Shaders/Red/f.glsl" />
+	
+	<!--- Ground Textures -->
+	<Texture Name="Ground0" Filename="./Content/Textures/Ground0.png" />
+	<Texture Name="Ground1" Filename="./Content/Textures/Ground1.png" />
+	<Texture Name="Ground2" Filename="./Content/Textures/Ground2.png" />
+	<Texture Name="Ground3" Filename="./Content/Textures/Ground3.jpg" />
+	<Texture Name="DemoTerrain" Filename="./Content/Textures/Terrain.png" />
+	
+	<!--- Water Texture -->
+	<Texture Name="Water" Filename="./Content/Textures/Water.png" />
+	
+	<Terrain Name="Demo">
+		<Terrain>DemoTerrain</Terrain>
+		<Texture ID="0">Ground0</Texture>
+		<Texture ID="1">Ground1</Texture>
+		<Texture ID="2">Ground2</Texture>
+		<Texture ID="3">Ground3</Texture>
+		<Heightmap>./Content/Textures/Heightmap.png</Heightmap>
+	</Terrain>
 </Content>
