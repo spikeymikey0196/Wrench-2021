@@ -6,10 +6,11 @@
 
 namespace Wrench
 {
-	SkyBox::SkyBox(Scene *nScene)
+	SkyBox::SkyBox(Scene *nScene, Node *nFollowing)
 		: Node(nScene)
 	{
 		transform.SetScale(1.0f);
+		following = nFollowing;
 	};
 
 	void SkyBox::Render()
@@ -81,6 +82,9 @@ namespace Wrench
 
 	void SkyBox::Render(const Matrix &matrix)
 	{
+		if (following)
+			transform.SetPosition(following->GetTransform()->Position());
+
 		glPushMatrix();
 		glLoadMatrixf((transform.GetMatrix() * (Matrix)matrix).m);
 		Render();

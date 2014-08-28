@@ -7,6 +7,7 @@
 #include "SkyBox.h"
 #include "Shader.h"
 #include "HealthBar.h"
+#include "UI.h"
 
 using namespace std;
 using namespace Wrench;
@@ -18,25 +19,16 @@ protected:
 	Camera *camera;
 
 	//temp
-	HealthBar *healthbar;
-	list<Light*> lights;
-	
-	//keep
 	PlayerNode *player;
+	UI *ui;
 
-	//move into scene
-	Node *skybox;
-	list<WorldChunkNode*> worldChunks;	//terrain
-	list<Node*> staticProps;			//solid unmoving
-	list<Node*> widgets;				//can be interacted with
-	list<Node*> units;					//todo
+	list<UIElement *> tempElements;
 
 	void Load(const char *filename);
 
 public:
 	DemoScene();
 	virtual void Draw();
-	virtual void Update(unsigned int Delta);
 	virtual void KeyDown(int KeyID);
 	virtual void KeyUp(int KeyID);
 	virtual void MouseButtonDown(float x, float y);

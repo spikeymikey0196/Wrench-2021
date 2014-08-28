@@ -2,6 +2,9 @@
 	<Texture Name="Adiantum" Filename="./Content/Models/Adiantum/Adiantum D.png" />
 	<Model Name="Adiantum" Texture="Adiantum" Filename="./Content/Models/Adiantum/Adiantum.obj" />
 	
+	<Texture Name="PalmTree" Filename="./Content/Models/PalmTree/PalmTree.png" />
+	<Model Name="PalmTree" Texture="PalmTree" Filename="./Content/Models/PalmTree/PalmTree.obj" />
+	
 	<Model Name="Sora" Texture="" Filename="./Content/Models/Sora/Sora.obj" />
 	<Model Name="Lightbulb" Texture="" Filename="./Content/Models/Lightbulb/Lightbulb.obj" />
 	

@@ -16,18 +16,16 @@ namespace Wrench
 		Rect bounds;
 		UIElement *parent;
 		list<UIElement*> children;
+		function<void(UIElement*, int, int)> onClick;
 
 	public:
 		UIElement();
-		UIElement(UIElement *nParent, const Rect &nBounds);
+		UIElement(UIElement *nParent, const Rect &nBounds, function<void(UIElement*, int, int)> nOnClick);
 
 		virtual void Render();
 		virtual UIElement *FindTargetElement(int x, int y);
 
-		//EVENTS
-		function<int(int, int)> MouseDown;
-		function<int(int, int)> MouseUp;
-		function<int(int, int)> MouseMove;
+		virtual void Click(int x, int y);
 	};
 }
 

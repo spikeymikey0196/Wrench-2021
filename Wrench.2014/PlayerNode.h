@@ -18,20 +18,15 @@ enum PlayerKeys
 	PKEY_RSTRAFE = 6,
 };
 
-class PlayerNode : public ModelNode
+class PlayerNode : public UnitNode
 {
 protected:
-	Vector3 velocity;
 	int keys[7];
 	Range<int> health;
 
 public:
 	PlayerNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, float nScale, Model *nModel);
 	virtual void Update(unsigned int Delta);
-
-	virtual void CollideProps(list<Node *> *props);
-	virtual void CollideTerrain(list<WorldChunkNode*> *worldChunks);
-	void AddVelocity(float x, float y, float z);
 
 	void SetKey(int k, int status);
 

@@ -22,10 +22,10 @@ namespace Wrench
 		Camera(const Vector3 &nEye, const Vector3 &nFocus, const Vector3 &nUp);
 		Camera(TiXmlElement *entry);
 
-		virtual void Clear();
+		static void Clear();
 		virtual void Begin();
 		virtual void Begin2D(const Viewport &viewport);
-		virtual void End();
+		static void End();
 
 		void SetEye(const Vector3 &nEye);
 		Vector3 Eye();

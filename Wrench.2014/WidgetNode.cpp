@@ -8,26 +8,26 @@ namespace Wrench
 		//
 	};
 
-	void WidgetNode::SetOnClick(function<void(WidgetNode*, Node*)> f)
+	void WidgetNode::SetOnClick(function<void(WidgetNode*, Node*, const Vector2 &mousePos)> f)
 	{
 		onClickEvent = f;
 	};
 
-	void WidgetNode::SetOnHover(function<void(WidgetNode*, Node*)> f)
+	void WidgetNode::SetOnHover(function<void(WidgetNode*, Node*, const Vector2 &mousePos)> f)
 	{
 		onHoverEvent = f;
 	};
 
-	void WidgetNode::OnClick(Node *caller)
+	void WidgetNode::OnClick(Node *caller, const Vector2 &mousePos)
 	{
 		if (onClickEvent)
-			onClickEvent(this, caller);
+			onClickEvent(this, caller, mousePos);
 	};
 
-	void WidgetNode::OnHover(Node *caller)
+	void WidgetNode::OnHover(Node *caller, const Vector2 &mousePos)
 	{
 		if (onHoverEvent)
-			onHoverEvent(this, caller);
+			onHoverEvent(this, caller, mousePos);
 	};
 
 }

@@ -101,12 +101,17 @@
 		<Model>Lightbulb</Model>
 	</StaticProp>
 	<StaticProp>
-		<Position>		<X>5</X> <Y>1</Y> <Z>0</Z> </Position>
-		<Model>Lightbulb</Model>
+		<Position>		<X>10</X> <Y>0</Y> <Z>-10</Z> </Position>
+		<Model>PalmTree</Model>
 	</StaticProp>
 	<StaticProp>
 		<Position>		<X>8</X> <Y>1</Y> <Z>0</Z> </Position>
 		<Model>Lightbulb</Model>
 	</StaticProp>
 	
+	
+	<Widget>
+		<Position>		<X>2</X> <Y>2</Y> <Z>2</Z> </Position>
+		<Model>Lightbulb</Model>
+	</Widget>
 </Level>

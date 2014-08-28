@@ -82,7 +82,10 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 
 
 
-
+void Windows_SetWindowTitle(const char *text)
+{
+	SetWindowText(g.hwnd, text);
+}
 
 
 

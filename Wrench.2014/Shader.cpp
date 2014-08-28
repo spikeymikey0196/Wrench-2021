@@ -174,7 +174,7 @@ namespace Wrench
 			void main()\
 			{\
 				vec4 color = texture2D(tex0, gl_TexCoord[0].st + vec2(time/1000.0, time/1000.0));\
-				gl_FragColor = color * vec4(0.0, 0.0, 1.0, 0.5);\
+				gl_FragColor = color * vec4(0.0, 0.0, 1.0, 0.6);\
 			}\
 			");
 		}

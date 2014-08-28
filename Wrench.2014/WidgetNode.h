@@ -11,17 +11,17 @@ namespace Wrench
 	class WidgetNode : public ModelNode
 	{
 	protected:
-		function<void(WidgetNode*, Node*)> onClickEvent;		//this, caller
-		function<void(WidgetNode*, Node*)> onHoverEvent;	//this, caller
+		function<void(WidgetNode*, Node*, const Vector2 &mousePos)> onClickEvent;	//this, caller
+		function<void(WidgetNode*, Node*, const Vector2 &mousePos)> onHoverEvent;	//this, caller
 
 	public:
 		WidgetNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, float nScale, Model *nModel);
 
-		virtual void SetOnClick(function<void(WidgetNode*, Node*)> f);
-		virtual void SetOnHover(function<void(WidgetNode*, Node*)> f);
+		virtual void SetOnClick(function<void(WidgetNode*, Node*, const Vector2 &mousePos)> f);
+		virtual void SetOnHover(function<void(WidgetNode*, Node*, const Vector2 &mousePos)> f);
 
-		virtual void OnClick(Node *caller);
-		virtual void OnHover(Node *caller);
+		virtual void OnClick(Node *caller, const Vector2 &mousePos);
+		virtual void OnHover(Node *caller, const Vector2 &mousePos);
 	};
 }
 

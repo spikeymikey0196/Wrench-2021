@@ -5,6 +5,8 @@
 
 using namespace std;
 
+extern void Windows_SetWindowTitle(const char *text);
+
 namespace Wrench
 {
 	stack<Scene *> sceneStack;
@@ -47,5 +49,10 @@ namespace Wrench
 	unsigned int GetTicks()
 	{
 		return timeGetTime();
+	};
+
+	void SetWindowTitle(const char *text)
+	{
+		Windows_SetWindowTitle(text);
 	};
 }

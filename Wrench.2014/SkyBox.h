@@ -7,8 +7,11 @@ namespace Wrench
 {
 	class SkyBox : public Node
 	{
+	protected:
+		Node *following;
+
 	public:
-		SkyBox(Scene *nScene);
+		SkyBox(Scene *nScene, Node *nFollowing);
 		virtual void Render();
 		virtual void Render(const Matrix &matrix);
 	};

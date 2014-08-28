@@ -28,6 +28,11 @@
 #include "Terrain.h"
 #include "Texture.h"
 #include "Transform.h"
+#include "UI.h"
+#include "UIElement.h"
+#include "UnitBrain.h"
+#include "Utils.h"
+#include "UnitNode.h"
 #include "Vector2.h"
 #include "Vector3.h"
 #include "Vector4.h"
@@ -50,6 +55,7 @@ namespace Wrench
 	void PopScene();
 	Scene *CurrentScene();
 	unsigned int GetTicks();
+	void SetWindowTitle(const char *text);
 }
 
 #endif

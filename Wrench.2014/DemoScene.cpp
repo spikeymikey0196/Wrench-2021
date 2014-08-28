@@ -14,29 +14,34 @@ using namespace std;
 //Classes to create:
 // * Rail camera - > list of pair<vector3, vector3>, position, lookat, lerp between points at SPEED
 // * Waypoint - add spawner for terrain as well
-// * Unit : ModelNode - initial npc
+// * Unit : ModelNode - health, pathing
 // * UI button, slider, checkbox, controller
+// * Event callback manager (content manager for widgetnodes)
 
 DemoScene::DemoScene()
 {
 	content->LoadFile("./Content/Content.xml");
-
-	viewport = Viewport(0, 0, 800, 600, 0.1f, 1000);
-
-	player = new PlayerNode(this, Vector3(0.0f, 1.0f, 0.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
-
 	Load("./Content/Levels/Test.xml");
 
-	skybox = new SkyBox(this);
-
-	healthbar = new HealthBar(NULL, Rect(10, 10, 200, 50), player->GetHealth());
-
+	viewport = Viewport(0, 0, 800, 600, 0.1f, 1000);
+	player = new PlayerNode(this, Vector3(0.0f, 1.0f, 0.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
+	skybox = new SkyBox(this, player);
 	camera = new FollowCamera(player, 5, 2, Vector3(0,1,0));
 
-	WidgetNode *test = new WidgetNode(this, Vector3(2, 2, 2), Vector3::Zero(), 1.0f, content->GetModel("Lightbulb"));
-	test->SetOnClick([](WidgetNode *owner, Node *caller){ owner->GetTransform()->SetScale(2.0f); });
+	for (int a = 0; a < 4; a++)
+	{
+		UnitNode *u = new UnitNode(this, Vector3(a, 30.0f, -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
+		AddUnit(u);
+	}
 
-	widgets.push_back(test);
+	units.push_back(player);
+	
+	
+	ui = new UI();
+	ui->AddElement(new HealthBar(NULL, Rect(10, 10, 200, 50), player->GetHealth()));
+	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), [](UIElement *e, int x, int y){exit(0); }));
+	
+	AddRenderPass(camera, &viewport, ui);
 };
 
 void DemoScene::Load(const char *filename)
@@ -53,11 +58,7 @@ void DemoScene::Load(const char *filename)
 
 			if (!valueStr.compare("Platform"))
 			{
-				staticProps.push_back(new ModelNode(this, entry, MissingModel::Get()));
-			}
-			else if (!valueStr.compare("Light"))
-			{
-				lights.push_back(new Light(entry));
+				AddStaticProp(new ModelNode(this, entry, MissingModel::Get()));
 			}
 			else if (!valueStr.compare("WorldChunk"))
 			{
@@ -82,7 +83,7 @@ void DemoScene::Load(const char *filename)
 					else {}
 				}
 
-				worldChunks.push_back(new WorldChunkNode(this, position, content->GetTerrain(terrainName), waterHeight, content->GetTexture("Water")));
+				AddWorldChunk(new WorldChunkNode(this, position, content->GetTerrain(terrainName), waterHeight, content->GetTexture("Water")));
 			}
 			else if (!valueStr.compare("StaticProp"))
 			{
@@ -106,11 +107,53 @@ void DemoScene::Load(const char *filename)
 					else{}
 				}
 
-				staticProps.push_back(new ModelNode(this, position, orientation, scale, content->GetModel(modelName)));
+				AddStaticProp(new ModelNode(this, position, orientation, scale, content->GetModel(modelName)));
 			}
 			else if (!valueStr.compare("Widget"))
 			{
-				//nodes.push_back(new ModelNode(this, Vector3(a*2.0f, b*2.0f, c * 2.0f), Vector3::Zero(), 0.5f, MissingModel::Get()));
+				string modelName = "";
+				Vector3 position = Vector3::Zero();
+				Vector3 orientation = Vector3::Zero();
+				float scale = 1.0f;
+
+				string clickCallback = "";
+				string hoverCallback = "";
+
+				XmlLoop(entry, staticEntry)
+				{
+					valueStr = staticEntry->ValueStr();
+
+					if (!valueStr.compare("Model"))
+						modelName = staticEntry->GetText();
+					else if (!valueStr.compare("Position"))
+						position = Vector3(staticEntry);
+					else if (!valueStr.compare("Orientation"))
+						orientation = Vector3(staticEntry);
+					else if (!valueStr.compare("Scale"))
+						scale = stof(staticEntry->GetText());
+					else if (!valueStr.compare("OnClick"))
+						clickCallback = staticEntry->GetText();
+					else if (!valueStr.compare("OnHover"))
+						hoverCallback = staticEntry->GetText();
+					else{}
+				}
+
+				WidgetNode *node = new WidgetNode(this, position, orientation, scale, content->GetModel(modelName));
+
+				//callback lookup -here-
+				node->SetOnClick([this](WidgetNode *owner, Node *caller, const Vector2 &mousePos)
+				{
+					owner->GetTransform()->SetScale(2.0f);
+					for (int a = 0; a < 6; a++)
+					{
+						UIElement *e = new UIElement(NULL, Rect(mousePos.x + sin(a) * 120, mousePos.y + cos(a) * 120, 50, 50), [](UIElement *sender, int x, int y){});
+
+						this->tempElements.push_back(e);
+						this->ui->AddElement(e);
+					}
+				});
+
+				AddWidget(node);
 			}
 			else
 			{
@@ -122,13 +165,6 @@ void DemoScene::Load(const char *filename)
 
 void DemoScene::Draw()
 {
-	camera->Clear();
-	viewport.UseViewport();
-	camera->Begin();
-
-	for (auto it : lights)
-		it->Enable();
-	
 	//temp
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -143,42 +179,13 @@ void DemoScene::Draw()
 	glLightfv(GL_LIGHT0, GL_AMBIENT, Ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	//end tmep
+	//end temp
+
+	//TEMP - will go into a shader
+	glAlphaFunc(GL_GREATER, 0.5);
+	glEnable(GL_ALPHA_TEST);
 	
-	skybox->Render(camera->GetMatrix());
-	
-	for (auto it : worldChunks)
-		it->RenderTerrain(camera->GetMatrix());
-
-	for (auto it : staticProps)
-		it->Render(camera->GetMatrix());
-
-	for (auto it : widgets)
-		it->Render(camera->GetMatrix());
-
-	player->Render(camera->GetMatrix());
-
-	for (auto it : worldChunks)
-		it->RenderWater(camera->GetMatrix());
-
-	for (auto it: lights)
-		it->Disable();
-
-	//2D TEST
-	camera->Begin2D(viewport);
-	healthbar->Render();
-	//END 2D TEST
-
-	camera->End();
-};
-
-void DemoScene::Update(unsigned int Delta)
-{
-	player->Update(Delta);
-	player->CollideProps(&staticProps);
-	player->CollideTerrain(&worldChunks);
-
-	skybox->GetTransform()->SetPosition(player->GetTransform()->Position());
+	Scene::Draw();
 };
 
 void DemoScene::KeyDown(int KeyID)
@@ -193,13 +200,20 @@ void DemoScene::KeyUp(int KeyID)
 
 void DemoScene::MouseButtonDown(float x, float y)
 {
-	for (auto it : widgets)
-		((ModelNode*)it)->GetTransform()->SetScale(1.0f);
+	if (!ui->Click(x, y))
+	{
+		for (auto it : tempElements)
+		{
+			ui->RemoveElement(it);
+			delete it;
+		}
+		tempElements.clear();
 
-	Node *closestNode = Ray::FromScreenCoordinates(x, y, *camera, viewport).ClosestIntersects(widgets);
+		Node *closestNode = Ray::FromScreenCoordinates(x, y, *camera, viewport).ClosestIntersects(widgets);
 
-	if (closestNode)
-		((WidgetNode*)closestNode)->OnClick(NULL);
+		if (closestNode)
+			((WidgetNode*)closestNode)->OnClick(player, Vector2(x, 600-y));
+	}
 };
 
 void DemoScene::MouseMotion(float x, float y)
@@ -207,5 +221,5 @@ void DemoScene::MouseMotion(float x, float y)
 	Node *closestNode = Ray::FromScreenCoordinates(x, y, *camera, viewport).ClosestIntersects(widgets);
 
 	if (closestNode)
-		((WidgetNode*)closestNode)->OnHover(NULL);
+		((WidgetNode*)closestNode)->OnHover(player, Vector2(x, 600-y));
 };
