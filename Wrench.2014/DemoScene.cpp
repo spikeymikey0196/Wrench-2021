@@ -36,7 +36,6 @@ DemoScene::DemoScene()
 
 	units.push_back(player);
 	
-	
 	ui = new UI();
 	ui->AddElement(new HealthBar(NULL, Rect(10, 10, 200, 50), player->GetHealth()));
 	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), [](UIElement *e, int x, int y){exit(0); }));
