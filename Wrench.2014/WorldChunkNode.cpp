@@ -75,8 +75,8 @@ namespace Wrench
 	{
 		Vector3 pos = transform.Position();
 
-		if (terrain) return BoundingBox(Vector3(pos.x, pos.y - 1000.0f, pos.z), Vector3(terrain->width, pos.y + 1000.0f, terrain->length));
-		if (water) return BoundingBox(Vector3(pos.x, pos.y - 1000.0f, pos.z), Vector3(water->width, pos.y + 1000.0f, water->length));
+		if (terrain) return BoundingBox(Vector3(pos.x, pos.y - 1000.0f, pos.z), Vector3(pos.x + terrain->width, pos.y + 1000.0f, pos.z + terrain->length));
+		if (water) return BoundingBox(Vector3(pos.x, pos.y - 1000.0f, pos.z), Vector3(pos.x + water->width, pos.y + 1000.0f, pos.z + water->length));
 
 		return BoundingBox(pos, pos);
 	};

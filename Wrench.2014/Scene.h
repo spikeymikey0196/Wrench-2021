@@ -13,6 +13,7 @@ namespace Wrench
 
 	protected:
 		ContentManager *content;
+		Vector3 gravity;
 
 	public:
 		Scene();
@@ -24,6 +25,10 @@ namespace Wrench
 		virtual void MouseButtonDown(float x, float y);
 		virtual void MouseButtonUp(float x, float y);
 		virtual void MouseMotion(float x, float y);
+
+		virtual Vector3 Gravity();
+		virtual Vector3 MillisecondGravity();
+		virtual void SetGravity(const Vector3 &nGravity);
 	};
 }
 

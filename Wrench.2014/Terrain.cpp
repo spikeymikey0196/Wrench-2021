@@ -81,7 +81,7 @@ namespace Wrench
 		{
 			for (int x = 0; x < nWidth; x++)
 			{
-				vertexArray.PushVertex({ { (float)x, 0, (float)z }, { w * (float)x, l * (float)z }, { 1, 1, 1 }, { 1, 1, 1, 1 } });
+				vertexArray.PushVertex({ { (float)x, 0, (float)z }, { w * (float)x, 1.0f - l * (float)z }, { 1, 1, 1 }, { 1, 1, 1, 1 } });
 			}
 		}
 

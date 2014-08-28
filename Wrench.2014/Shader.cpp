@@ -170,9 +170,10 @@ namespace Wrench
 				gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * pos;\
 			}\
 			", "uniform sampler2D tex0;\
+			uniform float time;\
 			void main()\
 			{\
-				vec4 color = texture2D(tex0, gl_TexCoord[0].st);\
+				vec4 color = texture2D(tex0, gl_TexCoord[0].st + vec2(time/1000.0, time/1000.0));\
 				gl_FragColor = color * vec4(0.0, 0.0, 1.0, 0.5);\
 			}\
 			");

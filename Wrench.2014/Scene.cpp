@@ -5,6 +5,7 @@ namespace Wrench
 	Scene::Scene()
 	{
 		content = new ContentManager();
+		gravity = Vector3(0.0, 1.0, 0.0);
 	};
 
 	Scene::~Scene()
@@ -46,5 +47,20 @@ namespace Wrench
 	void Scene::MouseMotion(float x, float y)
 	{
 
-	}
+	};
+
+	Vector3 Scene::Gravity()
+	{
+		return gravity;
+	};
+
+	Vector3 Scene::MillisecondGravity()
+	{
+		return gravity / 1000.0f;
+	};
+
+	void Scene::SetGravity(const Vector3 &nGravity)
+	{
+		gravity = nGravity;
+	};
 }

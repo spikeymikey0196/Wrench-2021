@@ -12,17 +12,47 @@
 	<Texture Name="Ground1" Filename="./Content/Textures/Ground1.png" />
 	<Texture Name="Ground2" Filename="./Content/Textures/Ground2.png" />
 	<Texture Name="Ground3" Filename="./Content/Textures/Ground3.jpg" />
-	<Texture Name="DemoTerrain" Filename="./Content/Textures/Terrain.png" />
+	<Texture Name="Terrain_0" Filename="./Content/Textures/Terrain_0.png" />
+	<Texture Name="Terrain_1" Filename="./Content/Textures/Terrain_1.png" />
+	<Texture Name="Terrain_2" Filename="./Content/Textures/Terrain_2.png" />
+	<Texture Name="Terrain_3" Filename="./Content/Textures/Terrain_3.png" />
 	
 	<!--- Water Texture -->
 	<Texture Name="Water" Filename="./Content/Textures/Water.png" />
 	
-	<Terrain Name="Demo">
-		<Terrain>DemoTerrain</Terrain>
+	<Terrain Name="Terrain_0">
+		<Terrain>Terrain_0</Terrain>
 		<Texture ID="0">Ground0</Texture>
 		<Texture ID="1">Ground1</Texture>
 		<Texture ID="2">Ground2</Texture>
 		<Texture ID="3">Ground3</Texture>
-		<Heightmap>./Content/Textures/Heightmap.png</Heightmap>
+		<Heightmap>./Content/Textures/0.png</Heightmap>
+	</Terrain>
+	
+	<Terrain Name="Terrain_1">
+		<Terrain>Terrain_1</Terrain>
+		<Texture ID="0">Ground0</Texture>
+		<Texture ID="1">Ground1</Texture>
+		<Texture ID="2">Ground2</Texture>
+		<Texture ID="3">Ground3</Texture>
+		<Heightmap>./Content/Textures/1.png</Heightmap>
+	</Terrain>
+	
+	<Terrain Name="Terrain_2">
+		<Terrain>Terrain_2</Terrain>
+		<Texture ID="0">Ground0</Texture>
+		<Texture ID="1">Ground1</Texture>
+		<Texture ID="2">Ground2</Texture>
+		<Texture ID="3">Ground3</Texture>
+		<Heightmap>./Content/Textures/2.png</Heightmap>
+	</Terrain>
+	
+	<Terrain Name="Terrain_3">
+		<Terrain>Terrain_3</Terrain>
+		<Texture ID="0">Ground0</Texture>
+		<Texture ID="1">Ground1</Texture>
+		<Texture ID="2">Ground2</Texture>
+		<Texture ID="3">Ground3</Texture>
+		<Heightmap>./Content/Textures/3.png</Heightmap>
 	</Terrain>
 </Content>

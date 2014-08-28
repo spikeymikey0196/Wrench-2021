@@ -36,7 +36,7 @@ namespace Wrench
 		void SetUp(const Vector3 &nUp);
 		Vector3 Up();
 
-		Matrix GetMatrix();
+		virtual Matrix GetMatrix();
 	};
 }
 

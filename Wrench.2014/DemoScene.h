@@ -15,22 +15,21 @@ class DemoScene : public Scene
 {
 protected:
 	Viewport viewport;
-	Camera camera;
+	Camera *camera;
 
-	list<Node *> nodes;
-	list<Node *> platforms;
+	//temp
+	HealthBar *healthbar;
+	list<Light*> lights;
+	
+	//keep
 	PlayerNode *player;
 
-	list<Light*> lights;
+	//move into scene
 	Node *skybox;
-
-	list<WorldChunkNode*> worldChunks;
-
-	list<Node *> clutter;
-
-	HealthBar *healthbar;
-
-	WorldChunkNode *chunk;
+	list<WorldChunkNode*> worldChunks;	//terrain
+	list<Node*> staticProps;			//solid unmoving
+	list<Node*> widgets;				//can be interacted with
+	list<Node*> units;					//todo
 
 	void Load(const char *filename);
 

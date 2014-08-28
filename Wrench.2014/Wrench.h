@@ -2,11 +2,11 @@
 #define WRENCH_H
 
 #include "BoundingBox.h"
-#include "Brain.h"
 #include "Camera.h"
 #include "Color3.h"
 #include "Color4.h"
 #include "ContentManager.h"
+#include "FollowCamera.h"
 #include "Light.h"
 #include "Matrix.h"
 #include "MissingModel.h"
@@ -35,6 +35,7 @@
 #include "VertexArray.h"
 #include "Viewport.h"
 #include "Water.h"
+#include "WidgetNode.h"
 #include "WMath.h"
 #include "WorldChunkNode.h"
 

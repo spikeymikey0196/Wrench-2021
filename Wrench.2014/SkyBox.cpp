@@ -82,7 +82,7 @@ namespace Wrench
 	void SkyBox::Render(const Matrix &matrix)
 	{
 		glPushMatrix();
-		glLoadMatrixf(((Matrix)matrix).m);
+		glLoadMatrixf((transform.GetMatrix() * (Matrix)matrix).m);
 		Render();
 		glPopMatrix();
 	};

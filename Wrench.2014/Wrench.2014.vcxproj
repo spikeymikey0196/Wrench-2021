@@ -79,12 +79,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoundingBox.cpp" />
-    <ClCompile Include="Brain.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color3.cpp" />
     <ClCompile Include="Color4.cpp" />
     <ClCompile Include="ContentManager.cpp" />
     <ClCompile Include="DemoScene.cpp" />
+    <ClCompile Include="FollowCamera.cpp" />
     <ClCompile Include="GLee.c" />
     <ClCompile Include="HealthBar.cpp" />
     <ClCompile Include="image_DXT.c" />
@@ -127,6 +127,8 @@
     <ClCompile Include="VertexArray.cpp" />
     <ClCompile Include="Viewport.cpp" />
     <ClCompile Include="Water.cpp" />
+    <ClCompile Include="Waypoint.cpp" />
+    <ClCompile Include="WidgetNode.cpp" />
     <ClCompile Include="WMath.cpp" />
     <ClCompile Include="WorldChunkNode.cpp" />
     <ClCompile Include="Wrench.cpp" />
@@ -134,13 +136,13 @@
   <ItemGroup>
     <ClInclude Include="begin_code.h" />
     <ClInclude Include="BoundingBox.h" />
-    <ClInclude Include="Brain.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="close_code.h" />
     <ClInclude Include="Color3.h" />
     <ClInclude Include="Color4.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="DemoScene.h" />
+    <ClInclude Include="FollowCamera.h" />
     <ClInclude Include="GLee.h" />
     <ClInclude Include="HealthBar.h" />
     <ClInclude Include="image_DXT.h" />
@@ -183,6 +185,8 @@
     <ClInclude Include="VertexArray.h" />
     <ClInclude Include="Viewport.h" />
     <ClInclude Include="Water.h" />
+    <ClInclude Include="Waypoint.h" />
+    <ClInclude Include="WidgetNode.h" />
     <ClInclude Include="WMath.h" />
     <ClInclude Include="WorldChunkNode.h" />
     <ClInclude Include="Wrench.h" />

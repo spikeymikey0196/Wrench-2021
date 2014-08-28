@@ -183,6 +183,9 @@ void init(HINSTANCE hInstance)
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
+
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
 }
 
 void shutdown()

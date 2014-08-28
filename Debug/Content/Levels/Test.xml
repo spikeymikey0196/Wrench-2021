@@ -76,13 +76,37 @@
 	</Light>
 	--!>
 	<!-- Terrain -->
-	<WorldChunk TerrainName="Demo">
+	<WorldChunk TerrainName="Terrain_1">
 		<Position>		<X>0</X> <Y>0</Y> <Z>0</Z> </Position>
 		<WaterHeight>1.0</WaterHeight>
 	</WorldChunk>
 	
-	<WorldChunk TerrainName="Demo">
+	<WorldChunk TerrainName="Terrain_0">
 		<Position>		<X>0</X> <Y>0</Y> <Z>-127</Z> </Position>
 		<WaterHeight>1.0</WaterHeight>
 	</WorldChunk>
+	
+	<WorldChunk TerrainName="Terrain_3">
+		<Position>		<X>127</X> <Y>0</Y> <Z>0</Z> </Position>
+		<WaterHeight>1.0</WaterHeight>
+	</WorldChunk>
+	
+	<WorldChunk TerrainName="Terrain_2">
+		<Position>		<X>127</X> <Y>0</Y> <Z>-127</Z> </Position>
+		<WaterHeight>1.0</WaterHeight>
+	</WorldChunk>
+	
+	<StaticProp>
+		<Position>		<X>2</X> <Y>1</Y> <Z>0</Z> </Position>
+		<Model>Lightbulb</Model>
+	</StaticProp>
+	<StaticProp>
+		<Position>		<X>5</X> <Y>1</Y> <Z>0</Z> </Position>
+		<Model>Lightbulb</Model>
+	</StaticProp>
+	<StaticProp>
+		<Position>		<X>8</X> <Y>1</Y> <Z>0</Z> </Position>
+		<Model>Lightbulb</Model>
+	</StaticProp>
+	
 </Level>
