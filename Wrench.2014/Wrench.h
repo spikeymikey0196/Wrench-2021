@@ -16,6 +16,7 @@
 #include "Node.h"
 #include "Packet.h"
 #include "Quaternion.h"
+#include "RailCamera.h"
 #include "Range.h"
 #include "Ray.h"
 #include "Rect.h"

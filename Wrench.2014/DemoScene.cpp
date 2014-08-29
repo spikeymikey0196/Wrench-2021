@@ -12,7 +12,6 @@
 using namespace std;
 
 //Classes to create:
-// * Rail camera - > list of pair<vector3, vector3>, position, lookat, lerp between points at SPEED
 // * Waypoint - add spawner for terrain as well
 // * Unit : ModelNode - health, pathing
 // * UI button, slider, checkbox, controller
@@ -27,6 +26,13 @@ DemoScene::DemoScene()
 	player = new PlayerNode(this, Vector3(0.0f, 1.0f, 0.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
 	skybox = new SkyBox(this, player);
 	camera = new FollowCamera(player, 5, 2, Vector3(0,1,0));
+
+	/*
+	camera = new RailCamera(Vector3(5, 10, 5), Vector3(0, 0, 0));
+	((RailCamera*)camera)->Play();
+	for (int a = 0; a < 15; a++)
+		((RailCamera*)camera)->AddRailPoint(Vector3(6+a*2, 10, 5), Vector3(6+a*3, a, 0));
+	*/
 
 	for (int a = 0; a < 4; a++)
 	{

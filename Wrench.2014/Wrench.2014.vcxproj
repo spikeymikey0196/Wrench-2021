@@ -100,6 +100,7 @@
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="PlayerNode.cpp" />
     <ClCompile Include="Quaternion.cpp" />
+    <ClCompile Include="RailCamera.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderTarget.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Packet.h" />
     <ClInclude Include="PlayerNode.h" />
     <ClInclude Include="Quaternion.h" />
+    <ClInclude Include="RailCamera.h" />
     <ClInclude Include="Range.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Rect.h" />
