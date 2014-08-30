@@ -34,15 +34,15 @@ namespace Wrench
 		bool Load(const char *filename);
 		void CreateBlank(Color4 color, int width, int height);
 
-		void Bind();
-		void Bind(int channel);
-		void Unbind();
-		void Unbind(int channel);
+		virtual void Bind();
+		virtual void Bind(int channel);
+		virtual void Unbind();
+		virtual void Unbind(int channel);
 
-		float Width();
-		float Height();
-		float PixelWidth();
-		float PixelHeight();
+		virtual float Width();
+		virtual float Height();
+		virtual float PixelWidth();
+		virtual float PixelHeight();
 
 		static Texture *Missing();
 	};

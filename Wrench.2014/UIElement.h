@@ -3,6 +3,7 @@
 
 #include "Transform.h"
 #include "Rect.h"
+#include "CallbackManager.h"
 #include <functional>
 #include <list>
 
@@ -21,6 +22,7 @@ namespace Wrench
 	public:
 		UIElement();
 		UIElement(UIElement *nParent, const Rect &nBounds, function<void(UIElement*, int, int)> nOnClick);
+		UIElement(UIElement *nParent, CallbackManager *callbackMgr, TiXmlElement *entry);
 
 		virtual void Render();
 		virtual UIElement *FindTargetElement(int x, int y);

@@ -8,6 +8,7 @@
 #include <iostream>
 #include <utility>
 #include <string>
+#include "HTTPTexture.h"
 
 using namespace std;
 
@@ -15,24 +16,75 @@ using namespace std;
 // * Waypoint - add spawner for terrain as well
 // * Unit : ModelNode - health, pathing
 // * UI button, slider, checkbox, controller
-// * Event callback manager (content manager for widgetnodes)
+// * FPS counter
 
 DemoScene::DemoScene()
 {
 	content->LoadFile("./Content/Content.xml");
+	
+
+	callbacks->AddUICallback("SwitchToMenu", [](UIElement *e, int x, int y){Wrench::PopScene(); });
+
+	callbacks->AddUICallback("BeginRail", [this](UIElement *sender, int x, int y){
+
+		this->ClearRenderPasses();
+
+		//camera leak - convert
+		this->camera = new RailCamera(Vector3(sin(0) * 128.0f + 128.0f, 30, cos(0) * 128.0f + 128.0f), Vector3(128, 18, 128), RAIL_ONCE);
+		((RailCamera*)this->camera)->Play();
+		for (int a = 1; a < 10; a++)
+			((RailCamera*)this->camera)->AddRailPoint(Vector3(sin(0.25f * a) * 128.0f + 128.0f, 30, cos(0.25f * a) * 128.0f + 128.0f), Vector3(128, 18, 128));
+
+		((RailCamera*)this->camera)->SetOnFinish(callbacks->GetRailCallback("SwitchToFollow"));
+
+
+		AddRenderPass(this->camera, &this->viewport, this->ui);
+
+		for (auto it : this->tempElements)
+		{
+			this->ui->RemoveElement(it);
+			//delete it;	//another leak
+		}
+		this->tempElements.clear();
+	});
+
+	callbacks->AddRailCallback("SwitchToFollow", [this](RailCamera *cam)
+	{
+		this->ClearRenderPasses();
+
+		this->camera = new FollowCamera(this->player, 5, 2, Vector3(0, 1, 0));
+		AddRenderPass(this->camera, &this->viewport, this->ui);
+
+		//convert to shared_ptr
+		//delete cam;
+	});
+
+	callbacks->AddWidgetCallback("OpenMenu", [this](WidgetNode *owner, Node *caller, const Vector2 &mousePos)
+	{
+		owner->GetTransform()->SetScale(2.0f);
+		for (int a = 0; a < 6; a++)
+		{
+			UIElement *e = new UIElement(NULL, Rect(mousePos.x + sin(a) * 120 - 25, mousePos.y + cos(a) * 120 - 25, 50, 50), callbacks->GetUICallback("BeginRail"));
+
+			this->tempElements.push_back(e);
+			this->ui->AddElement(e);
+		}
+	});
+
+
+
+
+
+
+
+
+
 	Load("./Content/Levels/Test.xml");
 
 	viewport = Viewport(0, 0, 800, 600, 0.1f, 1000);
-	player = new PlayerNode(this, Vector3(0.0f, 1.0f, 0.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
-	skybox = new SkyBox(this, player);
+	player = new PlayerNode(this, Vector3(125.0f, 30.0f, 80.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
+	//skybox = new SkyBox(this, player);
 	camera = new FollowCamera(player, 5, 2, Vector3(0,1,0));
-
-	/*
-	camera = new RailCamera(Vector3(5, 10, 5), Vector3(0, 0, 0));
-	((RailCamera*)camera)->Play();
-	for (int a = 0; a < 15; a++)
-		((RailCamera*)camera)->AddRailPoint(Vector3(6+a*2, 10, 5), Vector3(6+a*3, a, 0));
-	*/
 
 	for (int a = 0; a < 4; a++)
 	{
@@ -42,9 +94,13 @@ DemoScene::DemoScene()
 
 	units.push_back(player);
 	
+	
+
+	//move into UI XML file
+	//make nestable
 	ui = new UI();
 	ui->AddElement(new HealthBar(NULL, Rect(10, 10, 200, 50), player->GetHealth()));
-	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), [](UIElement *e, int x, int y){exit(0); }));
+	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), callbacks->GetUICallback("SwitchToMenu")));
 	
 	AddRenderPass(camera, &viewport, ui);
 };
@@ -145,18 +201,8 @@ void DemoScene::Load(const char *filename)
 
 				WidgetNode *node = new WidgetNode(this, position, orientation, scale, content->GetModel(modelName));
 
-				//callback lookup -here-
-				node->SetOnClick([this](WidgetNode *owner, Node *caller, const Vector2 &mousePos)
-				{
-					owner->GetTransform()->SetScale(2.0f);
-					for (int a = 0; a < 6; a++)
-					{
-						UIElement *e = new UIElement(NULL, Rect(mousePos.x + sin(a) * 120, mousePos.y + cos(a) * 120, 50, 50), [](UIElement *sender, int x, int y){});
-
-						this->tempElements.push_back(e);
-						this->ui->AddElement(e);
-					}
-				});
+				if (clickCallback.size() > 0) node->SetOnClick(callbacks->GetWidgetCallback(clickCallback));
+				if (hoverCallback.size() > 0) node->SetOnHover(callbacks->GetWidgetCallback(hoverCallback));
 
 				AddWidget(node);
 			}

@@ -5,6 +5,12 @@
 	<Texture Name="PalmTree" Filename="./Content/Models/PalmTree/PalmTree.png" />
 	<Model Name="PalmTree" Texture="PalmTree" Filename="./Content/Models/PalmTree/PalmTree.obj" />
 	
+	<Texture Name="WatchTower" Filename="./Content/Models/WatchTower/WatchTower.png" />
+	<Model Name="WatchTower" Texture="WatchTower" Filename="./Content/Models/WatchTower/WatchTower.obj" />
+	
+	<Texture Name="WineBarrel" Filename="./Content/Models/WineBarrel/WineBarrel.png" />
+	<Model Name="WineBarrel" Texture="WineBarrel" Filename="./Content/Models/WineBarrel/WineBarrel.obj" />
+	
 	<Model Name="Sora" Texture="" Filename="./Content/Models/Sora/Sora.obj" />
 	<Model Name="Lightbulb" Texture="" Filename="./Content/Models/Lightbulb/Lightbulb.obj" />
 	
@@ -56,6 +62,6 @@
 		<Texture ID="1">Ground1</Texture>
 		<Texture ID="2">Ground2</Texture>
 		<Texture ID="3">Ground3</Texture>
-		<Heightmap>./Content/Textures/3.png</Heightmap>
+		<Heightmap>./Content/Textures/test.png</Heightmap>
 	</Terrain>
 </Content>

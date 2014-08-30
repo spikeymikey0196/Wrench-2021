@@ -31,6 +31,9 @@
     <Filter Include="Libs\GLee">
       <UniqueIdentifier>{a7d7cb8e-91da-428e-9c12-ecb050d18b90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Libs\HappyHTTP">
+      <UniqueIdentifier>{770da450-d735-4d05-9ed0-180d91a585b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DemoScene.cpp">
@@ -205,6 +208,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RailCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CallbackManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="happyhttp.cpp">
+      <Filter>Libs\HappyHTTP</Filter>
+    </ClCompile>
+    <ClCompile Include="HTTPTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -387,6 +402,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RailCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CallbackManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="happyhttp.h">
+      <Filter>Libs\HappyHTTP</Filter>
+    </ClInclude>
+    <ClInclude Include="HTTPTexture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,13 +3,14 @@
 
 namespace Wrench
 {
-	RailCamera::RailCamera(const Vector3 &nEye, const Vector3 &nFocus)
+	RailCamera::RailCamera(const Vector3 &nEye, const Vector3 &nFocus, int nLoopType)
 		: Camera(nEye, nFocus, Vector3(0,1,0))
 	{
 		running = false;
 		railProgress = 0.0f;
 		lastFrameTime = Wrench::GetTicks();
 		rail = vector<tuple<Vector3, Vector3>>();
+		loopType = nLoopType;
 
 		AddRailPoint(nEye, nFocus);
 	};
@@ -17,6 +18,11 @@ namespace Wrench
 	void RailCamera::AddRailPoint(const Vector3 &eyePos, const Vector3 &focus)
 	{
 		rail.push_back(make_tuple(eyePos, focus));
+	};
+
+	void RailCamera::SetOnFinish(function<void(RailCamera*)> nOnFinish)
+	{
+		onFinish = nOnFinish;
 	};
 
 	void RailCamera::Play()
@@ -35,7 +41,15 @@ namespace Wrench
 	{
 		unsigned int currentTime = Wrench::GetTicks();
 		unsigned int delta = currentTime - lastFrameTime;
-		railProgress += 0.00001f * (float)delta;
+		lastFrameTime = currentTime;
+		railProgress += 0.001f * (float)delta;
+
+		if ((int)railProgress == (rail.size() - 1) && loopType == RAIL_ONCE)
+		{
+			if (onFinish)
+				onFinish(this);
+			return;
+		}
 
 		tuple<Vector3, Vector3> p1 = GetRailPoint(railProgress);
 		tuple<Vector3, Vector3> p2 = GetRailPoint(railProgress+1);
@@ -50,8 +64,16 @@ namespace Wrench
 	
 	tuple<Vector3, Vector3> RailCamera::GetRailPoint(int ID)
 	{
-		if (ID >= rail.size())
-			return rail[rail.size() - 1];
+		if (loopType == RAIL_ONCE)
+		{
+			if (ID >= rail.size())
+				return rail[rail.size() - 1];
+		}
+		else if (loopType == RAIL_LOOP)
+		{
+			ID = ID % rail.size();
+			return rail[ID];
+		}
 		return rail[ID];
 	};
 }

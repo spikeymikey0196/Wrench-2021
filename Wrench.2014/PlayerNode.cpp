@@ -81,6 +81,19 @@ void PlayerNode::SetKey(int k, int status)
 	}
 	break;
 
+	case VK_ESCAPE: exit(0); break;
+
+	case VK_F1:
+	{
+		if (status)
+		{
+			stringstream S;
+			S << "SS_" << Wrench::GetTicks() << ".bmp";
+			Wrench::TakeScreenshot(S.str().c_str());	//temp
+		}
+	}
+	break;
+
 	default: break;
 	}
 };

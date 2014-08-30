@@ -1,4 +1,5 @@
 #include "UIElement.h"
+#include "Utils.h"
 
 #include "GLee.h"
 #include <gl/GL.h>
@@ -18,6 +19,25 @@ namespace Wrench
 		parent = nParent;
 		bounds = nBounds;
 		onClick = nOnClick;
+	};
+
+	UIElement::UIElement(UIElement *nParent, CallbackManager *callbackMgr, TiXmlElement *entry)
+	{
+		parent = nParent;
+		string valueStr = "";
+
+		XmlLoop(entry, uiEntry)
+		{
+			valueStr = uiEntry->ValueStr();
+
+			if (!valueStr.compare("Bounds"))
+				bounds = Rect(uiEntry);
+			else if (!valueStr.compare("OnClick"))
+			{
+				onClick = callbackMgr->GetUICallback(uiEntry->GetText());
+			}
+			else{}
+		}
 	};
 
 	void UIElement::Render()

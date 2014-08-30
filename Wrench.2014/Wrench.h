@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "Color3.h"
 #include "Color4.h"
+#include "CallbackManager.h"
 #include "ContentManager.h"
 #include "FollowCamera.h"
 #include "Light.h"
@@ -57,6 +58,7 @@ namespace Wrench
 	Scene *CurrentScene();
 	unsigned int GetTicks();
 	void SetWindowTitle(const char *text);
+	void TakeScreenshot(const char *filename);
 }
 
 #endif

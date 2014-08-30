@@ -10,7 +10,9 @@ namespace Wrench
 	Scene::Scene()
 	{
 		content = new ContentManager();
+		callbacks = new CallbackManager();
 		gravity = Vector3(0.0, 1.0, 0.0);
+		skipFrame = false;
 	};
 
 	Scene::~Scene()
@@ -31,7 +33,7 @@ namespace Wrench
 			get<1>(rp)->UseViewport();
 			get<0>(rp)->Begin();
 
-			skybox->Render(m);
+//			skybox->Render(m);
 
 			for (auto it : worldChunks)
 				it->RenderTerrain(m);
@@ -52,6 +54,12 @@ namespace Wrench
 			{
 				get<0>(rp)->Begin2D(*get<1>(rp));
 				get<2>(rp)->Render();
+			}
+
+			if (skipFrame)
+			{
+				skipFrame = false;
+				return;
 			}
 		}
 
@@ -116,6 +124,7 @@ namespace Wrench
 	void Scene::ClearRenderPasses()
 	{
 		renderPasses.clear();
+		skipFrame = true;
 	};
 
 	WorldChunkNode *Scene::AddWorldChunk(WorldChunkNode *chunk)

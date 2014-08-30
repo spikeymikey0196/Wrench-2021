@@ -17,10 +17,10 @@ class DemoScene : public Scene
 protected:
 	Viewport viewport;
 	Camera *camera;
+	UI *ui;
 
 	//temp
 	PlayerNode *player;
-	UI *ui;
 
 	list<UIElement *> tempElements;
 

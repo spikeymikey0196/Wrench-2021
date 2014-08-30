@@ -2,6 +2,7 @@
 #define SCENE_H
 
 #include "ContentManager.h"
+#include "CallbackManager.h"
 #include "Viewport.h"
 #include "UI.h"
 #include <list>
@@ -21,7 +22,9 @@ namespace Wrench
 		friend class UnitNode;
 
 	protected:
+		bool skipFrame;
 		ContentManager *content;
+		CallbackManager *callbacks;
 		Vector3 gravity;
 
 		Node *skybox;

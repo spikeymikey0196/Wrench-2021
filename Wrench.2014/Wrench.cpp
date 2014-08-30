@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include "Wrench.h"
 #include "SDL_net.h"
+#include "SOIL.h"
 #include <stack>
 
 using namespace std;
@@ -54,5 +55,15 @@ namespace Wrench
 	void SetWindowTitle(const char *text)
 	{
 		Windows_SetWindowTitle(text);
+	};
+
+	void TakeScreenshot(const char *filename)
+	{
+		SOIL_save_screenshot
+			(
+			filename,
+			SOIL_SAVE_TYPE_BMP,
+			0, 0, 800, 600		//temp
+			);
 	};
 }

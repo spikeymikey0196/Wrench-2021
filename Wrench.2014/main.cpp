@@ -12,7 +12,7 @@
 #include "tinyxml.h"
 
 #include "Scene.h"
-#include "DemoScene.h"
+#include "MainMenuScene.h"
 
 #include "Wrench.h"
 
@@ -45,7 +45,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR szCmdLin
 
 	//temp
 	lastFrame = timeGetTime();
-	Wrench::PushScene(new DemoScene());
+	Wrench::PushScene(new MainMenuScene());
 	//end temp
 
     MSG msg;
