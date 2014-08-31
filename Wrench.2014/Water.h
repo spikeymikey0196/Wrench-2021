@@ -17,6 +17,9 @@ namespace Wrench
 		int width;
 		int length;
 
+		unsigned int tex0;
+		unsigned int ticks;
+
 		Shader *shader;
 		Texture *texture;
 
@@ -28,6 +31,7 @@ namespace Wrench
 
 		void CreateBlank(int nWidth, int nLength, float waterHeight);
 		void SetHeight(int x, int z, float vertexHeight);
+		void SetupVBO();
 
 		virtual void Render();
 		virtual void Render(const Matrix &worldMatrix);

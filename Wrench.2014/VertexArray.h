@@ -21,7 +21,11 @@ namespace Wrench
 	class VertexArray
 	{
 	protected:
+		unsigned int vboID;
+		unsigned int indexID;
+
 		int usageFlags;
+		int numIndices;
 		vector<Vertex> vertices;
 		vector<unsigned int> indices;
 
@@ -35,13 +39,14 @@ namespace Wrench
 		void PushTriangleIndices(unsigned int v1, unsigned int v2, unsigned int v3);
 		void SetTriangleIndex(unsigned int index, unsigned int v1);
 		
-		void GenerateVBO(unsigned int &vboID, unsigned int &vboIndexID);
+		void GenerateVBO();
 
 		void Render();
 	
 	protected:
 		void RenderByArray();
 		void RenderByElements();
+		void RenderAsVBO();
 	};
 }
 

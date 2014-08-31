@@ -13,6 +13,8 @@ namespace Wrench
 		vertexArray = VertexArray(VA_INDICES);
 
 		shader = Shader::DefaultWater();
+		tex0 = shader->GetUniform("tex0");
+		ticks = shader->GetUniform("time");
 	};
 
 	Water::Water(int nWidth, int nHeight, float waterHeight, Texture *nTexture)
@@ -52,14 +54,16 @@ namespace Wrench
 		v.position.y = vertexHeight;
 
 		vertexArray.SetVertex(x + (z * width), v);
-	}
+	};
+
+	void Water::SetupVBO()
+	{
+		vertexArray.GenerateVBO();
+	};
 
 	void Water::Render()
 	{
 		shader->Bind();
-
-		unsigned int tex0 = shader->GetUniform("tex0");
-		unsigned int ticks = shader->GetUniform("time");
 
 		glUniform1i(tex0, 0);
 		glUniform1f(ticks, GetTicks());

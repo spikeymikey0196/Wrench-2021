@@ -21,6 +21,9 @@ namespace Wrench
 	{
 		terrain = nTerrain;
 		water = nWater;
+
+		if (terrain) terrain->SetupVBO();
+		if (water) water->SetupVBO();
 	};
 
 	WorldChunkNode::WorldChunkNode(Scene *nScene, TiXmlElement *entry)
@@ -34,6 +37,9 @@ namespace Wrench
 	{
 		terrain = new Terrain(nWidth, nLength, controllerTex, terrainTex0, terrainTex1, terrainTex2, terrainTex3);
 		water = new Water(nWidth, nLength, waterHeight, waterTex);
+
+		if (terrain) terrain->SetupVBO();
+		if (water) water->SetupVBO();
 	};
 
 	WorldChunkNode::WorldChunkNode(Scene *nScene, const Vector3 &nPosition, Terrain *nTerrain, Water *nWater)
@@ -47,6 +53,8 @@ namespace Wrench
 	{
 		if (waterHeight != FLT_MIN)
 			water = new Water(terrain->width, terrain->length, waterHeight, waterTexture);
+
+		if (water) water->SetupVBO();
 	};
 
 	void WorldChunkNode::Render(const Matrix &worldMatrix)

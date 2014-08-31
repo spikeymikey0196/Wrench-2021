@@ -16,6 +16,12 @@ namespace Wrench
 	protected:
 		int width;
 		int length;
+
+		unsigned int tex0;
+		unsigned int tex1;
+		unsigned int tex2;
+		unsigned int tex3;
+		unsigned int tex4;
 		
 		Shader *shader;
 		Texture *controller;
@@ -32,6 +38,7 @@ namespace Wrench
 		void CreateBlank(int nWidth, int nLength);
 		void SetHeight(int x, int z, float vertexHeight);
 		void CalculateNormals();
+		void SetupVBO();
 
 		virtual void Render();
 		virtual void Render(const Matrix &worldMatrix);

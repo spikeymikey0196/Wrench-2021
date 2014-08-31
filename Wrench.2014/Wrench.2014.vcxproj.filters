@@ -222,6 +222,9 @@
     <ClCompile Include="HTTPTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ModelPMD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoScene.h">
@@ -414,6 +417,9 @@
       <Filter>Libs\HappyHTTP</Filter>
     </ClInclude>
     <ClInclude Include="HTTPTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelPMD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

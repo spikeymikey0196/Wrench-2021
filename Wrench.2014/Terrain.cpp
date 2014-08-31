@@ -12,6 +12,11 @@ namespace Wrench
 		vertexArray = VertexArray(VA_INDICES);
 
 		shader = Shader::DefaultTerrain();
+		tex0 = shader->GetUniform("tex0");
+		tex1 = shader->GetUniform("tex1");
+		tex2 = shader->GetUniform("tex2");
+		tex3 = shader->GetUniform("tex3");
+		tex4 = shader->GetUniform("tex4");
 	};
 
 	Terrain::Terrain(int nWidth, int nLength)
@@ -165,15 +170,14 @@ namespace Wrench
 		}
 	};
 
+	void Terrain::SetupVBO()
+	{
+		vertexArray.GenerateVBO();
+	};
+
 	void Terrain::Render()
 	{
 		shader->Bind();
-
-		unsigned int tex0 = shader->GetUniform("tex0");
-		unsigned int tex1 = shader->GetUniform("tex1");
-		unsigned int tex2 = shader->GetUniform("tex2");
-		unsigned int tex3 = shader->GetUniform("tex3");
-		unsigned int tex4 = shader->GetUniform("tex4");
 
 		glUniform1i(tex0, 0);
 		glUniform1i(tex1, 1);

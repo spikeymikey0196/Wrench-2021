@@ -33,11 +33,11 @@ void PlayerNode::Update(unsigned int Delta)
 
 	if (keys[PKEY_FORWARD] > 0)
 	{
-		velocity = transform.GetMatrix().Forward() * 0.1f;
+		velocity = transform.GetMatrix().Forward().Normalize() * 0.1f;
 	}
 	else if (keys[PKEY_BACKWARD] > 0)
 	{
-		velocity = transform.GetMatrix().Forward() * -0.1f;
+		velocity = transform.GetMatrix().Forward().Normalize() * -0.1f;
 	}
 	else{}
 
