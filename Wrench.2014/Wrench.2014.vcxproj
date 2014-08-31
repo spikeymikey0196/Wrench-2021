@@ -84,6 +84,7 @@
     <ClCompile Include="Color3.cpp" />
     <ClCompile Include="Color4.cpp" />
     <ClCompile Include="ContentManager.cpp" />
+    <ClCompile Include="CreatureNode.cpp" />
     <ClCompile Include="DemoScene.cpp" />
     <ClCompile Include="FollowCamera.cpp" />
     <ClCompile Include="GLee.c" />
@@ -128,7 +129,6 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UIElement.cpp" />
-    <ClCompile Include="UnitBrain.cpp" />
     <ClCompile Include="UnitNode.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
@@ -151,6 +151,7 @@
     <ClInclude Include="Color3.h" />
     <ClInclude Include="Color4.h" />
     <ClInclude Include="ContentManager.h" />
+    <ClInclude Include="CreatureNode.h" />
     <ClInclude Include="DemoScene.h" />
     <ClInclude Include="FollowCamera.h" />
     <ClInclude Include="GLee.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SOIL.h" />
+    <ClInclude Include="Stats.h" />
     <ClInclude Include="stbi_DDS_aug.h" />
     <ClInclude Include="stbi_DDS_aug_c.h" />
     <ClInclude Include="stb_image_aug.h" />
@@ -193,7 +195,6 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UIElement.h" />
-    <ClInclude Include="UnitBrain.h" />
     <ClInclude Include="UnitNode.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector2.h" />

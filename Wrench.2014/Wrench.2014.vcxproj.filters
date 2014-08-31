@@ -204,9 +204,6 @@
     <ClCompile Include="UI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnitBrain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RailCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -224,6 +221,9 @@
     </ClCompile>
     <ClCompile Include="ModelPMD.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatureNode.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -401,9 +401,6 @@
     <ClInclude Include="UI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UnitBrain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RailCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -421,6 +418,12 @@
     </ClInclude>
     <ClInclude Include="ModelPMD.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatureNode.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

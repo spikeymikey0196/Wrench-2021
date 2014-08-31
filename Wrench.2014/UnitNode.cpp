@@ -1,30 +1,29 @@
 #include "UnitNode.h"
 #include "WorldChunkNode.h"
 #include "Scene.h"
-#include "UnitBrain.h"
 
 namespace Wrench
 {
 	UnitNode::UnitNode()
-		: ModelNode(), brain(NULL){};
+		: ModelNode(){};
 
 	UnitNode::UnitNode(Scene *nScene, Model *nModel)
-		: ModelNode(nScene, nModel), velocity(Vector3::Zero()), brain(NULL) {};
+		: ModelNode(nScene, nModel), velocity(Vector3::Zero()){};
 
 	UnitNode::UnitNode(Scene *nScene, const Transform &nTransform, Model *nModel)
-		: ModelNode(nScene, nTransform, nModel), velocity(Vector3::Zero()), brain(NULL) {};
+		: ModelNode(nScene, nTransform, nModel), velocity(Vector3::Zero()){};
 
 	UnitNode::UnitNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, const Vector3 &nScale, Model *nModel)
-		: ModelNode(nScene, nPosition, nOrientation, nScale, nModel), velocity(Vector3::Zero()), brain(NULL) {};
+		: ModelNode(nScene, nPosition, nOrientation, nScale, nModel), velocity(Vector3::Zero()){};
 
 	UnitNode::UnitNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, float nScale, Model *nModel)
-		: ModelNode(nScene, nPosition, nOrientation, nScale, nModel), velocity(Vector3::Zero()), brain(NULL) {};
+		: ModelNode(nScene, nPosition, nOrientation, nScale, nModel), velocity(Vector3::Zero()){};
 
 	UnitNode::UnitNode(Scene *nScene, TiXmlElement *entry)
-		: ModelNode(nScene, entry), velocity(Vector3::Zero()), brain(NULL) {};
+		: ModelNode(nScene, entry), velocity(Vector3::Zero()){};
 
 	UnitNode::UnitNode(Scene *nScene, TiXmlElement *entry, Model *nModel)
-		: ModelNode(nScene, entry, nModel), velocity(Vector3::Zero()), brain(NULL) {};
+		: ModelNode(nScene, entry, nModel), velocity(Vector3::Zero()){};
 
 	void UnitNode::Update(unsigned int Delta)
 	{
@@ -34,9 +33,6 @@ namespace Wrench
 			velocity.y = -1.0f;
 
 		transform.SetPosition(transform.Position() + velocity);
-
-		if (brain)
-			brain->Update(Delta);
 
 		ModelNode::Update(Delta);
 	};

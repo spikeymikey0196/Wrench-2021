@@ -2,20 +2,15 @@
 #define UNITNODE_H
 
 #include "ModelNode.h"
-#include "Range.h"
 
 namespace Wrench
 {
 	class WorldChunkNode;
-	class UnitBrain;
 
 	class UnitNode : public ModelNode
 	{
-		friend class UnitBrain;
-
 	protected:
 		Vector3 velocity;
-		UnitBrain *brain;
 
 	public:
 		UnitNode();

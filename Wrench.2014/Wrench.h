@@ -32,7 +32,6 @@
 #include "Transform.h"
 #include "UI.h"
 #include "UIElement.h"
-#include "UnitBrain.h"
 #include "Utils.h"
 #include "UnitNode.h"
 #include "Vector2.h"
