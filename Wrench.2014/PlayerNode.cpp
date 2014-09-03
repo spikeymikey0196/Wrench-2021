@@ -5,7 +5,7 @@
 using namespace std;
 
 PlayerNode::PlayerNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, float nScale, Model *nModel)
-	: UnitNode(nScene, nPosition, nOrientation, nScale, nModel)
+	: PhysicsNode(nScene, nPosition, nOrientation, nScale, nModel)
 {
 	for (int a = 0; a < 7; a++)
 		keys[a] = 0;
@@ -60,7 +60,7 @@ void PlayerNode::Update(unsigned int Delta)
 	
 	velocity.y = y;
 
-	UnitNode::Update(Delta);
+	PhysicsNode::Update(Delta);
 };
 
 void PlayerNode::SetKey(int k, int status)

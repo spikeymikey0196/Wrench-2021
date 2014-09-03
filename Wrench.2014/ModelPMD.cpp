@@ -104,7 +104,6 @@ namespace Wrench
 			for (int a = 0; a < numMaterials; a++)
 			{
 				pmdFile.read(matBuffer, 70);
-				int aaaa = 0;
 			}
 
 			return true;

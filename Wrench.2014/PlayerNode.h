@@ -18,7 +18,7 @@ enum PlayerKeys
 	PKEY_RSTRAFE = 6,
 };
 
-class PlayerNode : public UnitNode
+class PlayerNode : public PhysicsNode
 {
 protected:
 	int keys[7];

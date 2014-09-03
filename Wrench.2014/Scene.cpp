@@ -1,9 +1,9 @@
 #include "Scene.h"
-#include "UnitNode.h"
+#include "PhysicsNode.h"
 #include "Camera.h"
 #include "Node.h"
 #include "WorldChunkNode.h"
-#include "UnitNode.h"
+#include "PhysicsNode.h"
 
 namespace Wrench
 {
@@ -70,9 +70,9 @@ namespace Wrench
 	{
 		for (auto it : units)
 		{
-			((UnitNode*)it)->Update(Delta);
-			((UnitNode*)it)->CollideProps(&staticProps);
-			((UnitNode*)it)->CollideTerrain(&worldChunks);
+			((PhysicsNode*)it)->Update(Delta);
+			((PhysicsNode*)it)->CollideProps(&staticProps);
+			((PhysicsNode*)it)->CollideTerrain(&worldChunks);
 		}
 	};
 
@@ -145,7 +145,7 @@ namespace Wrench
 		return prop;
 	};
 
-	UnitNode *Scene::AddUnit(UnitNode *unit)
+	PhysicsNode *Scene::AddUnit(PhysicsNode *unit)
 	{
 		units.push_back(unit);
 		return unit;
@@ -166,7 +166,7 @@ namespace Wrench
 		staticProps.remove(prop);
 	};
 
-	void Scene::RemoveUnit(UnitNode *unit)
+	void Scene::RemoveUnit(PhysicsNode *unit)
 	{
 		units.remove(unit);
 	};

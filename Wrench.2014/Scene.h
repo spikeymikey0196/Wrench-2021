@@ -19,7 +19,7 @@ namespace Wrench
 		friend class WidgetNode;
 		friend class Camera;
 		friend class WorldChunkNode;
-		friend class UnitNode;
+		friend class PhysicsNode;
 
 	protected:
 		bool skipFrame;
@@ -56,12 +56,12 @@ namespace Wrench
 		virtual WorldChunkNode *AddWorldChunk(WorldChunkNode *chunk);
 		virtual WidgetNode *AddWidget(WidgetNode *widget);
 		virtual ModelNode *AddStaticProp(ModelNode *prop);
-		virtual UnitNode *AddUnit(UnitNode *unit);
+		virtual PhysicsNode *AddUnit(PhysicsNode *unit);
 
 		virtual void RemoveWorldChunk(WorldChunkNode *chunk);
 		virtual void RemoveWidget(WidgetNode *widget);
 		virtual void RemoveStaticProp(ModelNode *prop);
-		virtual void RemoveUnit(UnitNode *unit);
+		virtual void RemoveUnit(PhysicsNode *unit);
 	};
 }
 

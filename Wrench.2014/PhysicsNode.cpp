@@ -1,31 +1,31 @@
-#include "UnitNode.h"
+#include "PhysicsNode.h"
 #include "WorldChunkNode.h"
 #include "Scene.h"
 
 namespace Wrench
 {
-	UnitNode::UnitNode()
+	PhysicsNode::PhysicsNode()
 		: ModelNode(){};
 
-	UnitNode::UnitNode(Scene *nScene, Model *nModel)
+	PhysicsNode::PhysicsNode(Scene *nScene, Model *nModel)
 		: ModelNode(nScene, nModel), velocity(Vector3::Zero()){};
 
-	UnitNode::UnitNode(Scene *nScene, const Transform &nTransform, Model *nModel)
+	PhysicsNode::PhysicsNode(Scene *nScene, const Transform &nTransform, Model *nModel)
 		: ModelNode(nScene, nTransform, nModel), velocity(Vector3::Zero()){};
 
-	UnitNode::UnitNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, const Vector3 &nScale, Model *nModel)
+	PhysicsNode::PhysicsNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, const Vector3 &nScale, Model *nModel)
 		: ModelNode(nScene, nPosition, nOrientation, nScale, nModel), velocity(Vector3::Zero()){};
 
-	UnitNode::UnitNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, float nScale, Model *nModel)
+	PhysicsNode::PhysicsNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &nOrientation, float nScale, Model *nModel)
 		: ModelNode(nScene, nPosition, nOrientation, nScale, nModel), velocity(Vector3::Zero()){};
 
-	UnitNode::UnitNode(Scene *nScene, TiXmlElement *entry)
+	PhysicsNode::PhysicsNode(Scene *nScene, TiXmlElement *entry)
 		: ModelNode(nScene, entry), velocity(Vector3::Zero()){};
 
-	UnitNode::UnitNode(Scene *nScene, TiXmlElement *entry, Model *nModel)
+	PhysicsNode::PhysicsNode(Scene *nScene, TiXmlElement *entry, Model *nModel)
 		: ModelNode(nScene, entry, nModel), velocity(Vector3::Zero()){};
 
-	void UnitNode::Update(unsigned int Delta)
+	void PhysicsNode::Update(unsigned int Delta)
 	{
 		velocity.y = velocity.y - scene->MillisecondGravity().y * (float)Delta;
 
@@ -37,12 +37,12 @@ namespace Wrench
 		ModelNode::Update(Delta);
 	};
 
-	void UnitNode::AddVelocity(float x, float y, float z)
+	void PhysicsNode::AddVelocity(float x, float y, float z)
 	{
 		velocity += Vector3(x, y, z);
 	};
 
-	void UnitNode::CollideProps(list<Node *> *props)
+	void PhysicsNode::CollideProps(list<Node *> *props)
 	{
 		for (auto it : *props)
 		{
@@ -96,7 +96,7 @@ namespace Wrench
 		}
 	};
 
-	void UnitNode::CollideTerrain(list<WorldChunkNode*> *worldChunks)
+	void PhysicsNode::CollideTerrain(list<WorldChunkNode*> *worldChunks)
 	{
 		for (auto it : *worldChunks)
 		{

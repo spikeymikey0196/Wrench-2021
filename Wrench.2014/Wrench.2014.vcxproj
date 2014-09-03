@@ -129,7 +129,7 @@
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UIElement.cpp" />
-    <ClCompile Include="UnitNode.cpp" />
+    <ClCompile Include="PhysicsNode.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Vector4.cpp" />
@@ -151,6 +151,7 @@
     <ClInclude Include="Color3.h" />
     <ClInclude Include="Color4.h" />
     <ClInclude Include="ContentManager.h" />
+    <ClInclude Include="CreatureDB.h" />
     <ClInclude Include="CreatureNode.h" />
     <ClInclude Include="DemoScene.h" />
     <ClInclude Include="FollowCamera.h" />
@@ -195,7 +196,7 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UIElement.h" />
-    <ClInclude Include="UnitNode.h" />
+    <ClInclude Include="PhysicsNode.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />

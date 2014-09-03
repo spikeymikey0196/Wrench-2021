@@ -92,7 +92,7 @@ DemoScene::DemoScene()
 
 	for (int a = 0; a < 4; a++)
 	{
-		UnitNode *u = new UnitNode(this, Vector3(a, 30.0f, -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
+		PhysicsNode *u = new PhysicsNode(this, Vector3(a, 30.0f, -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
 		AddUnit(u);
 	}
 

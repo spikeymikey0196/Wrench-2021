@@ -6,7 +6,7 @@
 
 using namespace Wrench;
 
-class CreatureNode : public UnitNode
+class CreatureNode : public PhysicsNode
 {
 protected:
 	unsigned int factionID;
@@ -15,12 +15,13 @@ protected:
 	Range<int> Health;
 	Range<int> Magic;
 
+	unsigned int aiState;
+	unsigned int actionState;
 
 public:
-	CreatureNode(Scene *nScene);
+	CreatureNode(Scene *nScene, Model *nModel, const Vector3 &nPosition, const Vector3 &nOrientation, float scale);
 
 	virtual void Update(unsigned int Delta);
-
 	virtual void TickAI(unsigned int Delta);
 
 	virtual void Die();
