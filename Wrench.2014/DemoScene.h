@@ -21,6 +21,7 @@ protected:
 
 	//temp
 	PlayerNode *player;
+	WidgetNode *terrainCursor;
 
 	list<UIElement *> tempElements;
 

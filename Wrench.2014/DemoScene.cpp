@@ -97,7 +97,10 @@ DemoScene::DemoScene()
 	}
 
 	units.push_back(player);
-	
+
+
+	terrainCursor = new WidgetNode(this, Vector3::Zero(), Vector3::Zero(), 0.1f, MissingModel::Get());
+	this->AddWidget(terrainCursor);
 	
 
 	//move into UI XML file
@@ -273,8 +276,41 @@ void DemoScene::MouseButtonDown(float x, float y)
 
 void DemoScene::MouseMotion(float x, float y)
 {
+	/*
 	Node *closestNode = Ray::FromScreenCoordinates(x, y, *camera, viewport).ClosestIntersects(widgets);
 
 	if (closestNode)
 		((WidgetNode*)closestNode)->OnHover(player, Vector2(x, 600-y));
+		*/
+
+
+	float closestDistance = FLT_MAX;
+	Vector3 closestPos;
+	Ray r = Ray::FromScreenCoordinates(x, y, *camera, viewport);
+
+	for (float a = 0.0f; a < 100.0f; a += 0.2f)
+	{
+		Vector3 pos = r.Position() + (r.Direction() * a);
+		for (auto chunk : worldChunks)
+		{
+			float height = chunk->GetTerrainHeight(pos);
+			float difference = fabs(height - pos.y);
+
+			if (difference == 0.0f)
+			{
+				terrainCursor->GetTransform()->SetPosition(pos);
+				return;
+			}
+			else
+			{
+				if (difference < closestDistance)
+				{
+					closestDistance = difference;
+					closestPos = pos;
+				}
+			}
+		}
+	}
+
+	terrainCursor->GetTransform()->SetPosition(closestPos);
 };
