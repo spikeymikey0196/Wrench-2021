@@ -78,6 +78,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionState.cpp" />
+    <ClCompile Include="AIPathingState.cpp" />
+    <ClCompile Include="AIState.cpp" />
+    <ClCompile Include="AIWatchNodeState.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
     <ClCompile Include="CallbackManager.cpp" />
     <ClCompile Include="Camera.cpp" />
@@ -143,6 +147,10 @@
     <ClCompile Include="Wrench.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionState.h" />
+    <ClInclude Include="AIPathingState.h" />
+    <ClInclude Include="AIState.h" />
+    <ClInclude Include="AIWatchNodeState.h" />
     <ClInclude Include="begin_code.h" />
     <ClInclude Include="BoundingBox.h" />
     <ClInclude Include="CallbackManager.h" />
@@ -151,9 +159,9 @@
     <ClInclude Include="Color3.h" />
     <ClInclude Include="Color4.h" />
     <ClInclude Include="ContentManager.h" />
-    <ClInclude Include="CreatureDB.h" />
     <ClInclude Include="CreatureNode.h" />
     <ClInclude Include="DemoScene.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="FollowCamera.h" />
     <ClInclude Include="GLee.h" />
     <ClInclude Include="happyhttp.h" />
@@ -184,7 +192,6 @@
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SkyBox.h" />
     <ClInclude Include="SOIL.h" />
-    <ClInclude Include="Stats.h" />
     <ClInclude Include="stbi_DDS_aug.h" />
     <ClInclude Include="stbi_DDS_aug_c.h" />
     <ClInclude Include="stb_image_aug.h" />

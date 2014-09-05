@@ -5,19 +5,38 @@ namespace Wrench
 	Waypoint::Waypoint(const Vector3 &nPosition)
 	{
 		position = nPosition;
-		
-		for (int a = 0; a < 4; a++)
-			adjacentWaypoints[a] = NULL;
 	};
 
-	void Waypoint::SetAdjacent(int direction, Waypoint *wp)
+	void Waypoint::SetAdjacent(int index, Waypoint *wp)
 	{
-		adjacentWaypoints[direction] = wp;
+		adjacentWaypoints[index] = wp;
 	};
 
-	Waypoint *Waypoint::GetAdjacent(int direction)
+	void Waypoint::AddAdjacent(Waypoint *wp)
 	{
-		return adjacentWaypoints[direction];
+		adjacentWaypoints.push_back(wp);
+	};
+
+	void Waypoint::ClearAdjacent()
+	{
+		adjacentWaypoints.clear();
+	};
+
+	Waypoint *Waypoint::GetAdjacent(int index)
+	{
+		if (index >= 0 && index < adjacentWaypoints.size())
+			return adjacentWaypoints[index];
+		return NULL;
+	};
+
+	Vector3 Waypoint::Position()
+	{
+		return position;
+	};
+
+	void Waypoint::SetPosition(const Vector3 &nPosition)
+	{
+		position = nPosition;
 	};
 
 }

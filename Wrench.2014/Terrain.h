@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "BoundingBox.h"
 #include "Matrix.h"
+#include "Waypoint.h"
 
 namespace Wrench
 {
@@ -29,6 +30,8 @@ namespace Wrench
 
 		VertexArray vertexArray;
 
+		Waypoint ***waypoints;
+
 	public:
 		Terrain();
 		Terrain(int nWidth, int nLength);
@@ -42,6 +45,7 @@ namespace Wrench
 
 		virtual void Render();
 		virtual void Render(const Matrix &worldMatrix);
+		virtual void RenderWaypoints(const Matrix &worldMatrix);
 
 		float GetHeight(float x, float z);
 		float GetHeight(const Vector3 &pos);

@@ -2,26 +2,27 @@
 #define WAYPOINT_H
 
 #include "Vector3.h"
+#include <vector>
+
+using namespace std;
 
 namespace Wrench
 {
-	enum WaypointDirections
-	{
-		WAYPOINT_XPLUS = 0,
-		WAYPOINT_YPLUS = 1,
-		WAYPOINT_XMINUS = 2,
-		WAYPOINT_YMINUS = 3,
-	};
-
 	class Waypoint
 	{
 	protected:
 		Vector3 position;
-		Waypoint *adjacentWaypoints[4];
+		vector<Waypoint *> adjacentWaypoints;
 	public:
 		Waypoint(const Vector3 &nPosition);
-		void SetAdjacent(int direction, Waypoint *wp);
-		Waypoint *GetAdjacent(int direction);
+		void SetAdjacent(int index, Waypoint *wp);
+		void AddAdjacent(Waypoint *wp);
+		void ClearAdjacent();
+
+		Waypoint *GetAdjacent(int index);
+
+		Vector3 Position();
+		void SetPosition(const Vector3 &nPosition);
 	};
 }
 

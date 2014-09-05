@@ -60,6 +60,7 @@ namespace Wrench
 				v.position.y += 0.1f * ht_map[3 * z * w + (x * channels)];
 
 				vertexArray.SetVertex(z * w + x, v);
+				waypoints[z][x] = new Waypoint(v.position);
 			}
 		}
 
@@ -82,11 +83,15 @@ namespace Wrench
 		float w = 1.0f / (float)width;
 		float l = 1.0f / (float)length;
 
+		waypoints = new Waypoint**[length];
+
 		for (int z = 0; z < nLength; z++)
 		{
+			waypoints[z] = new Waypoint*[width];
 			for (int x = 0; x < nWidth; x++)
 			{
 				vertexArray.PushVertex({ { (float)x, 0, (float)z }, { w * (float)x, 1.0f - l * (float)z }, { 1, 1, 1 }, { 1, 1, 1, 1 } });
+				waypoints[z][x] = new Waypoint(Vector3((float)x, 0, (float)z));
 			}
 		}
 
@@ -98,6 +103,18 @@ namespace Wrench
 				vertexArray.PushTriangleIndices((z + 1) * nWidth + x, (z + 1) * nWidth + x+1, z * nWidth + x + 1);
 			}
 		}
+
+		for (int z = 0; z < length; z++)
+		{
+			for (int x = 0; x < width; x++)
+			{
+				if (z > 0) waypoints[z][x]->AddAdjacent(waypoints[z - 1][x]);
+				if (x > 0) waypoints[z][x]->AddAdjacent(waypoints[z][x - 1]);
+
+				if (z < length - 1) waypoints[z][x]->AddAdjacent(waypoints[z + 1][x]);
+				if (x < width - 1) waypoints[z][x]->AddAdjacent(waypoints[z][x + 1]);
+			}
+		}
 	};
 
 	void Terrain::SetHeight(int x, int z, float vertexHeight)
@@ -106,6 +123,7 @@ namespace Wrench
 		v.position.y = vertexHeight;
 
 		vertexArray.SetVertex(x + (z * width), v);
+		waypoints[z][x]->SetPosition(v.position);
 	};
 
 	void Terrain::CalculateNormals()
@@ -217,6 +235,27 @@ namespace Wrench
 		glPushMatrix();
 		glLoadMatrixf(((Matrix)worldMatrix).m);
 		Render();
+		glPopMatrix();
+	};
+
+	void Terrain::RenderWaypoints(const Matrix &worldMatrix)
+	{
+		glPushMatrix();
+		glLoadMatrixf(((Matrix)worldMatrix).m);
+		
+		Vector3 v;
+		glPointSize(5.0f);
+		glBegin(GL_POINTS);
+		for (int z = 0; z < length; z++)
+		{
+			for (int x = 0; x < width; x++)
+			{
+				v = waypoints[z][x]->Position();
+				glVertex3f(v.x, v.y, v.z);
+			}
+		}
+		glEnd();
+		glPointSize(1.0f);
 		glPopMatrix();
 	};
 

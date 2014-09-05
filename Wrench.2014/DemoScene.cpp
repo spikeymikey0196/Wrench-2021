@@ -10,6 +10,8 @@
 #include <string>
 #include "HTTPTexture.h"
 #include "ModelPMD.h"
+#include "CreatureNode.h"
+#include "AIWatchNodeState.h"
 
 using namespace std;
 
@@ -92,8 +94,10 @@ DemoScene::DemoScene()
 
 	for (int a = 0; a < 4; a++)
 	{
-		PhysicsNode *u = new PhysicsNode(this, Vector3(a, 30.0f, -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
-		AddUnit(u);
+		CreatureNode *c = new CreatureNode(this, content->GetModel("Sora"), Vector3(125.0f + a, 30.0f, 85.0f + -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f);
+		c->SetAIState(new AIWatchNodeState(c, player));
+
+		AddUnit(c);
 	}
 
 	units.push_back(player);

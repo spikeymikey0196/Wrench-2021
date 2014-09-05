@@ -34,17 +34,23 @@
     <Filter Include="Libs\HappyHTTP">
       <UniqueIdentifier>{770da450-d735-4d05-9ed0-180d91a585b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\AIStates">
+      <UniqueIdentifier>{ff221759-f95e-4e7e-a342-47ac547af8c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\ActionStates">
+      <UniqueIdentifier>{ef5aee04-10f0-428a-9a31-34a22ba7683e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Nodes">
+      <UniqueIdentifier>{d6531725-5476-4486-af4a-ac191addb038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Scenes">
+      <UniqueIdentifier>{9f5edc83-9e16-4492-b6d3-278895228178}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI">
+      <UniqueIdentifier>{6095b9f5-785d-47d8-bff3-a8ddd27a25be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DemoScene.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="HealthBar.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerNode.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="tinyxmlparser.cpp">
       <Filter>Libs\TinyXML</Filter>
     </ClCompile>
@@ -204,9 +210,6 @@
     <ClCompile Include="RailCamera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainMenuScene.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="CallbackManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -219,23 +222,38 @@
     <ClCompile Include="ModelPMD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CreatureNode.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsNode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AIWatchNodeState.cpp">
+      <Filter>Game\AIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="AIState.cpp">
+      <Filter>Game\AIStates</Filter>
+    </ClCompile>
+    <ClCompile Include="ActionState.cpp">
+      <Filter>Game\ActionStates</Filter>
+    </ClCompile>
+    <ClCompile Include="CreatureNode.cpp">
+      <Filter>Game\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerNode.cpp">
+      <Filter>Game\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuScene.cpp">
+      <Filter>Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScene.cpp">
+      <Filter>Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthBar.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="AIPathingState.cpp">
+      <Filter>Game\AIStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DemoScene.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="HealthBar.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerNode.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="tinyxml.h">
       <Filter>Libs\TinyXML</Filter>
     </ClInclude>
@@ -401,9 +419,6 @@
     <ClInclude Include="RailCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainMenuScene.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="CallbackManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -416,17 +431,38 @@
     <ClInclude Include="ModelPMD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stats.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="CreatureNode.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="CreatureDB.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="PhysicsNode.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIWatchNodeState.h">
+      <Filter>Game\AIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="AIState.h">
+      <Filter>Game\AIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionState.h">
+      <Filter>Game\ActionStates</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatureNode.h">
+      <Filter>Game\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerNode.h">
+      <Filter>Game\Nodes</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuScene.h">
+      <Filter>Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScene.h">
+      <Filter>Game\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthBar.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPathingState.h">
+      <Filter>Game\AIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
