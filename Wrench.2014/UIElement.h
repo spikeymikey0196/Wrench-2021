@@ -3,6 +3,7 @@
 
 #include "Transform.h"
 #include "Rect.h"
+#include "Texture.h"
 #include "CallbackManager.h"
 #include <functional>
 #include <list>
@@ -15,13 +16,15 @@ namespace Wrench
 	{
 	protected:
 		Rect bounds;
+		Rect texCoords;
+		Texture *texture;
 		UIElement *parent;
 		list<UIElement*> children;
 		function<void(UIElement*, int, int)> onClick;
 
 	public:
 		UIElement();
-		UIElement(UIElement *nParent, const Rect &nBounds, function<void(UIElement*, int, int)> nOnClick);
+		UIElement(UIElement *nParent, const Rect &nBounds, Texture *nTexture, const Rect &nTexCoords, function<void(UIElement*, int, int)> nOnClick);
 		UIElement(UIElement *nParent, CallbackManager *callbackMgr, TiXmlElement *entry);
 
 		virtual void Render();

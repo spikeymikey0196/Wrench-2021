@@ -10,9 +10,6 @@ PlayerNode::PlayerNode(Scene *nScene, const Vector3 &nPosition, const Vector3 &n
 	for (int a = 0; a < 7; a++)
 		keys[a] = 0;
 
-	if (nModel)
-		nModel->ShrinkXZ();
-
 	health = Range<int>(0, 100, 100);
 };
 

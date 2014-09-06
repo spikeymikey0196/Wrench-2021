@@ -122,19 +122,4 @@ namespace Wrench
 		return bounds;
 	};
 
-	void ModelPMD::ShrinkXZ()
-	{
-		Vector3 min = bounds.Min();
-		Vector3 max = bounds.Max();
-
-		if (min.x > min.z) min.z = min.x;
-		if (min.z > min.x) min.x = min.z;
-
-		if (max.x < max.z) max.z = max.x;
-		if (max.z < max.x) max.x = max.z;
-
-		bounds.SetMin(min);
-		bounds.SetMax(max);
-	};
-
 }

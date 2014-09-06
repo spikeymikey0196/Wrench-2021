@@ -13,7 +13,6 @@ namespace Wrench
 		unsigned int vboID;
 		unsigned int indexVBOID;
 		int numFaces;
-		BoundingBox bounds;
 
 		VertexArray vertexArray;
 
@@ -23,7 +22,6 @@ namespace Wrench
 		bool Load(const char *filename);
 		virtual void Render();
 		virtual BoundingBox Bounds();
-		virtual void ShrinkXZ();
 	};
 }
 

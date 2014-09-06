@@ -22,6 +22,11 @@ namespace Wrench
 		adjacentWaypoints.clear();
 	};
 
+	int Waypoint::AmountAdjacent()
+	{
+		return adjacentWaypoints.size();
+	};
+
 	Waypoint *Waypoint::GetAdjacent(int index)
 	{
 		if (index >= 0 && index < adjacentWaypoints.size())

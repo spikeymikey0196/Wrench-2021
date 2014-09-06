@@ -4,7 +4,7 @@
 #include <GL/glu.h>
 
 HealthBar::HealthBar(UIElement *nParent, const Rect &nBounds, Range<int> *nTarget)
-	: UIElement(nParent, nBounds, [](UIElement*e, int x, int y){})
+	: UIElement(nParent, nBounds, NULL, Rect(), [](UIElement*e, int x, int y){})
 {
 	target = nTarget;
 };

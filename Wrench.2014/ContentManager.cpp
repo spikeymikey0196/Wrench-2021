@@ -50,11 +50,23 @@ namespace Wrench
 					{
 						string mFile = "";
 						string tName = "";
+						Model *mdl = NULL;
 
 						entry->QueryStringAttribute("Filename", &mFile);
 						entry->QueryStringAttribute("Texture", &tName);
 
-						AddModel(name, new ModelObj(mFile.c_str(), GetTexture(tName)));
+						mdl = new ModelObj(mFile.c_str(), GetTexture(tName));
+
+						XmlLoop(entry, modelEntry)
+						{
+							valueStr = modelEntry->ValueStr();
+
+							if (!valueStr.compare("Bounds"))
+								mdl->SetBounds(BoundingBox(modelEntry));
+						}
+
+
+						AddModel(name, mdl);
 					}
 					else if (!valueStr.compare("Terrain"))
 					{

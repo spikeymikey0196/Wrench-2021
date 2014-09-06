@@ -11,7 +11,13 @@
 	<Texture Name="WineBarrel" Filename="./Content/Models/WineBarrel/WineBarrel.png" />
 	<Model Name="WineBarrel" Texture="WineBarrel" Filename="./Content/Models/WineBarrel/WineBarrel.obj" />
 	
-	<Model Name="Sora" Texture="" Filename="./Content/Models/Sora/Sora.obj" />
+	<Model Name="Sora" Texture="" Filename="./Content/Models/Sora/Sora.obj">
+		<Bounds>
+			<Min><X>-0.2</X> <Y>0</Y> <Z>-0.2</Z></Min>
+			<Max><X>0.2</X> <Y>1.5</Y> <Z>0.2</Z></Max>
+		</Bounds>
+	</Model>
+		
 	<Model Name="Lightbulb" Texture="" Filename="./Content/Models/Lightbulb/Lightbulb.obj" />
 	
 	<Shader Name="Red" Vert="./Content/Shaders/Red/v.glsl" Frag="./Content/Shaders/Red/f.glsl" />

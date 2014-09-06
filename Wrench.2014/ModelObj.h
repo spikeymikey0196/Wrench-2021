@@ -13,7 +13,6 @@ namespace Wrench
 	{
 	protected:
 		Texture *texture;
-		BoundingBox bounds;
 		unsigned int vboID;
 		unsigned int indexVBOID;
 		int numFaces;
@@ -26,7 +25,6 @@ namespace Wrench
 		bool Load(const char *filename);
 		virtual void Render();
 		virtual BoundingBox Bounds();
-		virtual void ShrinkXZ();
 	};
 }
 

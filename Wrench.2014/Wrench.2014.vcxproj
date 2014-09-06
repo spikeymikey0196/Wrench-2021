@@ -78,8 +78,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionMoveToPoint.cpp" />
     <ClCompile Include="ActionState.cpp" />
-    <ClCompile Include="AIPathingState.cpp" />
+    <ClCompile Include="AIFollowPathState.cpp" />
     <ClCompile Include="AIState.cpp" />
     <ClCompile Include="AIWatchNodeState.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
@@ -147,8 +148,9 @@
     <ClCompile Include="Wrench.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionMoveToPoint.h" />
     <ClInclude Include="ActionState.h" />
-    <ClInclude Include="AIPathingState.h" />
+    <ClInclude Include="AIFollowPathState.h" />
     <ClInclude Include="AIState.h" />
     <ClInclude Include="AIWatchNodeState.h" />
     <ClInclude Include="begin_code.h" />

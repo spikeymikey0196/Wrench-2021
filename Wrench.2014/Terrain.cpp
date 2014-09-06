@@ -294,4 +294,10 @@ namespace Wrench
 		return BoundingBox();	//temp
 	};
 
+	Waypoint *Terrain::WaypointAt(float x, float z)
+	{
+		if (x < 0 || x > width - 1 || z < 0 || z > length - 1)
+			return NULL;
+		return waypoints[(int)z][(int)x];
+	}
 };

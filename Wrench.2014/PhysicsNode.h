@@ -23,6 +23,8 @@ namespace Wrench
 
 		virtual void Update(unsigned int Delta);
 		void AddVelocity(float x, float y, float z);
+		Vector3 Velocity();
+		void SetVelocity(const Vector3 &nVelocity);
 
 		virtual void CollideProps(list<Node *> *props);
 		virtual void CollideTerrain(list<WorldChunkNode*> *worldChunks);

@@ -20,22 +20,22 @@ void CreatureNode::Die()
 	//solve later
 };
 
-void CreatureNode::SetAIState(AIState *nAIState)
+void CreatureNode::SetAIState(shared_ptr<AIState> nAIState)
 {
 	aiState = nAIState;
 };
 
-void CreatureNode::SetActionState(ActionState *nActionState)
+void CreatureNode::SetActionState(shared_ptr<ActionState> nActionState)
 {
 	actionState = nActionState;
 };
 
-AIState *CreatureNode::GetAIState()
+shared_ptr<AIState> CreatureNode::GetAIState()
 {
 	return aiState;
 };
 
-ActionState *CreatureNode::GetActionState()
+shared_ptr<ActionState> CreatureNode::GetActionState()
 {
 	return actionState;
 };

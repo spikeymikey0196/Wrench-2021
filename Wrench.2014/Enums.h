@@ -3,9 +3,9 @@
 
 enum AIStateEnum
 {
-	AI_IDLE		=	0x0,
-	AI_WATCHNODE=	0x1,
-	AI_PATHING	=	0x2,
+	AI_IDLE			=	0x0,
+	AI_WATCHNODE	=	0x1,
+	AI_FOLLOWPATH	=	0x2,
 };
 
 enum ActionStateEnum

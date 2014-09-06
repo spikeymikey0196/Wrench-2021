@@ -50,6 +50,8 @@ namespace Wrench
 		float GetHeight(float x, float z);
 		float GetHeight(const Vector3 &pos);
 		virtual BoundingBox Bounds();
+
+		Waypoint *WaypointAt(float x, float z);
 	};
 }
 

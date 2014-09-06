@@ -18,6 +18,7 @@ namespace Wrench
 		void SetAdjacent(int index, Waypoint *wp);
 		void AddAdjacent(Waypoint *wp);
 		void ClearAdjacent();
+		int AmountAdjacent();
 
 		Waypoint *GetAdjacent(int index);
 

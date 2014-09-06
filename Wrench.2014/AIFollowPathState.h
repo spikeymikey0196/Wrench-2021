@@ -3,19 +3,22 @@
 
 #include "AIState.h"
 #include "Waypoint.h"
+#include <list>
 
+using namespace std;
 using namespace Wrench;
 
-class AIPathingState : AIState
+class AIFollowPathState : public AIState
 {
 protected:
 	Waypoint *startingPoint;
 	Waypoint *endingPoint;
 
-	//path here
+	list<Waypoint *> path;
+	bool loop;
 
 public:
-	AIPathingState(CreatureNode *nOwner, Waypoint *nStartingPoint, Waypoint *nEndingPoint);
+	AIFollowPathState(CreatureNode *nOwner, const list<Waypoint*> &nPath, bool nLoop = false);
 	virtual void Update(unsigned int Delta);
 };
 

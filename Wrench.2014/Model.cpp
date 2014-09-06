@@ -14,4 +14,10 @@ namespace Wrench
 		Render();
 		glPopMatrix();
 	};
+
+	void Model::SetBounds(const BoundingBox &nBounds)
+	{
+		bounds = nBounds;
+	};
+
 }

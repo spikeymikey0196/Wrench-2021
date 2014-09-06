@@ -249,7 +249,10 @@
     <ClCompile Include="HealthBar.cpp">
       <Filter>Game\UI</Filter>
     </ClCompile>
-    <ClCompile Include="AIPathingState.cpp">
+    <ClCompile Include="ActionMoveToPoint.cpp">
+      <Filter>Game\ActionStates</Filter>
+    </ClCompile>
+    <ClCompile Include="AIFollowPathState.cpp">
       <Filter>Game\AIStates</Filter>
     </ClCompile>
   </ItemGroup>
@@ -458,11 +461,14 @@
     <ClInclude Include="HealthBar.h">
       <Filter>Game\UI</Filter>
     </ClInclude>
-    <ClInclude Include="AIPathingState.h">
-      <Filter>Game\AIStates</Filter>
-    </ClInclude>
     <ClInclude Include="Enums.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionMoveToPoint.h">
+      <Filter>Game\ActionStates</Filter>
+    </ClInclude>
+    <ClInclude Include="AIFollowPathState.h">
+      <Filter>Game\AIStates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

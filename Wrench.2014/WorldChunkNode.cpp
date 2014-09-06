@@ -103,4 +103,13 @@ namespace Wrench
 		return FLT_MIN;
 	};
 
+	Terrain *WorldChunkNode::GetTerrain()
+	{
+		return terrain;
+	};
+
+	Water *WorldChunkNode::GetWater()
+	{
+		return water;
+	};
 }

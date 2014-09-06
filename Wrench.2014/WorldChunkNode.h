@@ -30,6 +30,9 @@ namespace Wrench
 		virtual BoundingBox GetBounds();
 		virtual float GetTerrainHeight(const Vector3 &pos);
 		virtual float GetWaterHeight(const Vector3 &pos);
+
+		Terrain *GetTerrain();
+		Water *GetWater();
 	};
 }
 

@@ -13,12 +13,15 @@ namespace Wrench
 		parent = NULL;
 	};
 
-	UIElement::UIElement(UIElement *nParent, const Rect &nBounds, function<void(UIElement*, int, int)> nOnClick)
+	UIElement::UIElement(UIElement *nParent, const Rect &nBounds, Texture *nTexture, const Rect &nTexCoords, function<void(UIElement*, int, int)> nOnClick)
 		: UIElement()
 	{
 		parent = nParent;
 		bounds = nBounds;
 		onClick = nOnClick;
+
+		texture = nTexture;
+		texCoords = nTexCoords;
 	};
 
 	UIElement::UIElement(UIElement *nParent, CallbackManager *callbackMgr, TiXmlElement *entry)
@@ -42,14 +45,23 @@ namespace Wrench
 
 	void UIElement::Render()
 	{
-		glBindTexture(GL_TEXTURE_2D, 0);
+		if (texture) texture->Bind();
+
 		glBegin(GL_QUADS);
+			glTexCoord2f(texCoords.x, texCoords.y);
 			glVertex2f(bounds.x, bounds.y);
+
+			glTexCoord2f(texCoords.x, texCoords.y + texCoords.height);
 			glVertex2f(bounds.x, bounds.y + bounds.height);
+
+			glTexCoord2f(texCoords.x + texCoords.width, texCoords.y + texCoords.height);
 			glVertex2f(bounds.x + bounds.width, bounds.y + bounds.height);
+
+			glTexCoord2f(texCoords.x + texCoords.width, texCoords.y);
 			glVertex2f(bounds.x+bounds.width, bounds.y);
 		glEnd();
 
+		if (texture) texture->Unbind();
 
 		for (auto it : children)
 			it->Render();

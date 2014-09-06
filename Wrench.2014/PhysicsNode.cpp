@@ -42,6 +42,16 @@ namespace Wrench
 		velocity += Vector3(x, y, z);
 	};
 
+	Vector3 PhysicsNode::Velocity()
+	{
+		return velocity;
+	};
+
+	void PhysicsNode::SetVelocity(const Vector3 &nVelocity)
+	{
+		velocity = nVelocity;
+	};
+
 	void PhysicsNode::CollideProps(list<Node *> *props)
 	{
 		for (auto it : *props)

@@ -12,6 +12,8 @@
 #include "ModelPMD.h"
 #include "CreatureNode.h"
 #include "AIWatchNodeState.h"
+#include "ActionMoveToPoint.h"
+#include "AIFollowPathState.h"
 
 using namespace std;
 
@@ -69,7 +71,7 @@ DemoScene::DemoScene()
 		owner->GetTransform()->SetScale(2.0f);
 		for (int a = 0; a < 6; a++)
 		{
-			UIElement *e = new UIElement(NULL, Rect(mousePos.x + sin(a) * 120 - 25, mousePos.y + cos(a) * 120 - 25, 50, 50), callbacks->GetUICallback("BeginRail"));
+			UIElement *e = new UIElement(NULL, Rect(mousePos.x + sin(a) * 120 - 25, mousePos.y + cos(a) * 120 - 25, 50, 50), NULL, Rect(), callbacks->GetUICallback("BeginRail"));
 
 			this->tempElements.push_back(e);
 			this->ui->AddElement(e);
@@ -95,8 +97,29 @@ DemoScene::DemoScene()
 	for (int a = 0; a < 4; a++)
 	{
 		CreatureNode *c = new CreatureNode(this, content->GetModel("Sora"), Vector3(125.0f + a, 30.0f, 85.0f + -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f);
-		c->SetAIState(new AIWatchNodeState(c, player));
+		//c->SetAIState(new AIWatchNodeState(c, player));
 
+
+		WorldChunkNode *n = worldChunks.front();
+
+		if (a != 3)
+		{
+			list<Waypoint*> path;
+			path.push_back(n->GetTerrain()->WaypointAt(210, 70));
+
+			c->SetAIState(make_shared<AIFollowPathState>(c, path, true));
+		}
+		else
+		{
+			list<Waypoint*> path;
+			path.push_back(n->GetTerrain()->WaypointAt(210, 70));
+			path.push_back(n->GetTerrain()->WaypointAt(210, 50));
+			path.push_back(n->GetTerrain()->WaypointAt(230, 50));
+			path.push_back(n->GetTerrain()->WaypointAt(230, 70));
+			path.push_back(n->GetTerrain()->WaypointAt(210, 70));
+
+			c->SetAIState(make_shared<AIFollowPathState>(c, path, true));
+		}
 		AddUnit(c);
 	}
 
@@ -111,7 +134,7 @@ DemoScene::DemoScene()
 	//make nestable
 	ui = new UI();
 	ui->AddElement(new HealthBar(NULL, Rect(10, 10, 200, 50), player->GetHealth()));
-	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), callbacks->GetUICallback("SwitchToMenu")));
+	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), NULL, Rect(), callbacks->GetUICallback("SwitchToMenu")));
 	
 	AddRenderPass(camera, &viewport, ui);
 };
