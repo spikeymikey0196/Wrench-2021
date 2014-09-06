@@ -97,6 +97,12 @@
 		<Scale>0.5</Scale>
 	</StaticProp>
 	
+	<StaticProp>
+		<Position>		<X>92</X> <Y>17.8</Y> <Z>84</Z> </Position>
+		<Model>Boat</Model>
+		<Scale>0.5</Scale>
+	</StaticProp>
+	
 	<!-- Widgets -->
 	<Widget>
 		<Position>		<X>125</X> <Y>20</Y> <Z>50</Z> </Position>

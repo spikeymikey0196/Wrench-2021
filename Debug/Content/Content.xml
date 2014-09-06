@@ -1,4 +1,6 @@
 <Content>
+	<Texture Name="BackToMainMenuBtn" Filename="./Content/Textures/BackToMainMenuBtn.png" />
+	
 	<Texture Name="Adiantum" Filename="./Content/Models/Adiantum/Adiantum D.png" />
 	<Model Name="Adiantum" Texture="Adiantum" Filename="./Content/Models/Adiantum/Adiantum.obj" />
 	
@@ -11,6 +13,9 @@
 	<Texture Name="WineBarrel" Filename="./Content/Models/WineBarrel/WineBarrel.png" />
 	<Model Name="WineBarrel" Texture="WineBarrel" Filename="./Content/Models/WineBarrel/WineBarrel.obj" />
 	
+	<Texture Name="Boat" Filename="./Content/Models/Boat/Boat.png" />
+	<Model Name="Boat" Texture="Boat" Filename="./Content/Models/Boat/Boat.obj" />
+	
 	<Model Name="Sora" Texture="" Filename="./Content/Models/Sora/Sora.obj">
 		<Bounds>
 			<Min><X>-0.2</X> <Y>0</Y> <Z>-0.2</Z></Min>
@@ -19,6 +24,7 @@
 	</Model>
 		
 	<Model Name="Lightbulb" Texture="" Filename="./Content/Models/Lightbulb/Lightbulb.obj" />
+	<Model Name="Sheep" Texture="" Filename="./Content/Models/Sheep/Sheep.obj" />
 	
 	<Shader Name="Red" Vert="./Content/Shaders/Red/v.glsl" Frag="./Content/Shaders/Red/f.glsl" />
 	

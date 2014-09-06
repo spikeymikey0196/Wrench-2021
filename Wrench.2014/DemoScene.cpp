@@ -96,7 +96,7 @@ DemoScene::DemoScene()
 
 	for (int a = 0; a < 4; a++)
 	{
-		CreatureNode *c = new CreatureNode(this, content->GetModel("Sora"), Vector3(125.0f + a, 30.0f, 85.0f + -a * 2.0f - 2.0f), Vector3::Zero(), 1.0f);
+		CreatureNode *c = new CreatureNode(this, content->GetModel("Sheep"), Vector3(125.0f + a, 30.0f, 85.0f + -a * 2.0f - 2.0f), Vector3::Zero(), 0.5f);
 		//c->SetAIState(new AIWatchNodeState(c, player));
 
 
@@ -134,7 +134,7 @@ DemoScene::DemoScene()
 	//make nestable
 	ui = new UI();
 	ui->AddElement(new HealthBar(NULL, Rect(10, 10, 200, 50), player->GetHealth()));
-	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), NULL, Rect(), callbacks->GetUICallback("SwitchToMenu")));
+	ui->AddElement(new UIElement(NULL, Rect(10, 100, 100, 50), content->GetTexture("BackToMainMenuBtn"), Rect(0,1,1,-1), callbacks->GetUICallback("SwitchToMenu")));
 	
 	AddRenderPass(camera, &viewport, ui);
 };
