@@ -82,6 +82,7 @@
     <ClCompile Include="ActionState.cpp" />
     <ClCompile Include="AIFollowPathState.cpp" />
     <ClCompile Include="AIState.cpp" />
+    <ClCompile Include="AIWanderState.cpp" />
     <ClCompile Include="AIWatchNodeState.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
     <ClCompile Include="CallbackManager.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="ActionState.h" />
     <ClInclude Include="AIFollowPathState.h" />
     <ClInclude Include="AIState.h" />
+    <ClInclude Include="AIWanderState.h" />
     <ClInclude Include="AIWatchNodeState.h" />
     <ClInclude Include="begin_code.h" />
     <ClInclude Include="BoundingBox.h" />

@@ -255,6 +255,9 @@
     <ClCompile Include="AIFollowPathState.cpp">
       <Filter>Game\AIStates</Filter>
     </ClCompile>
+    <ClCompile Include="AIWanderState.cpp">
+      <Filter>Game\AIStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml.h">
@@ -468,6 +471,9 @@
       <Filter>Game\ActionStates</Filter>
     </ClInclude>
     <ClInclude Include="AIFollowPathState.h">
+      <Filter>Game\AIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="AIWanderState.h">
       <Filter>Game\AIStates</Filter>
     </ClInclude>
   </ItemGroup>
