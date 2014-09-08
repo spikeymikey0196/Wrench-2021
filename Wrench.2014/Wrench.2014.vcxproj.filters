@@ -258,6 +258,9 @@
     <ClCompile Include="AIWanderState.cpp">
       <Filter>Game\AIStates</Filter>
     </ClCompile>
+    <ClCompile Include="Plane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml.h">
@@ -475,6 +478,9 @@
     </ClInclude>
     <ClInclude Include="AIWanderState.h">
       <Filter>Game\AIStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

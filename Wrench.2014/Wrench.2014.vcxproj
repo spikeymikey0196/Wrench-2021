@@ -110,6 +110,7 @@
     <ClCompile Include="ModelPMD.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Packet.cpp" />
+    <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PlayerNode.cpp" />
     <ClCompile Include="Quaternion.cpp" />
     <ClCompile Include="RailCamera.cpp" />
@@ -183,6 +184,7 @@
     <ClInclude Include="ModelPMD.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Packet.h" />
+    <ClInclude Include="Plane.h" />
     <ClInclude Include="PlayerNode.h" />
     <ClInclude Include="Quaternion.h" />
     <ClInclude Include="RailCamera.h" />

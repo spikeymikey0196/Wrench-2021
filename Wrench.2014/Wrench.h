@@ -16,6 +16,7 @@
 #include "ModelObj.h"
 #include "Node.h"
 #include "Packet.h"
+#include "Plane.h"
 #include "Quaternion.h"
 #include "RailCamera.h"
 #include "Range.h"
