@@ -2,6 +2,7 @@
 #define WRENCH_H
 
 #include "BoundingBox.h"
+#include "BoundingSphere.h"
 #include "Camera.h"
 #include "Color3.h"
 #include "Color4.h"

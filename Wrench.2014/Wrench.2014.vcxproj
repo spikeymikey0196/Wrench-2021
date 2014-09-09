@@ -85,6 +85,7 @@
     <ClCompile Include="AIWanderState.cpp" />
     <ClCompile Include="AIWatchNodeState.cpp" />
     <ClCompile Include="BoundingBox.cpp" />
+    <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="CallbackManager.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color3.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="AIWatchNodeState.h" />
     <ClInclude Include="begin_code.h" />
     <ClInclude Include="BoundingBox.h" />
+    <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="CallbackManager.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="close_code.h" />
