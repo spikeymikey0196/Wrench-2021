@@ -1,4 +1,6 @@
 <Content>
+	<Font Name="DemoFont" Filename="./Content/Fonts/DemoFonts.h" LetterWidth="20" LetterHeight="20" AsciiOffset="32" />
+	
 	<Texture Name="BackToMainMenuBtn" Filename="./Content/Textures/BackToMainMenuBtn.png" />
 	
 	<Texture Name="Adiantum" Filename="./Content/Models/Adiantum/Adiantum D.png" />

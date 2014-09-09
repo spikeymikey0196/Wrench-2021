@@ -68,6 +68,19 @@ namespace Wrench
 
 						AddModel(name, mdl);
 					}
+					else if (!valueStr.compare("Font"))
+					{
+						string fontFile = "";
+						Rect letterSize = Rect();
+						int asciiOffset = 0;
+
+						entry->QueryStringAttribute("Filename", &fontFile);
+						entry->QueryIntAttribute("AsciiOffset", &asciiOffset);
+						entry->QueryFloatAttribute("LetterWidth", &letterSize.width);
+						entry->QueryFloatAttribute("LetterHeight", &letterSize.height);
+
+						AddFont(name, new Font(fontFile, letterSize, asciiOffset));
+					}
 					else if (!valueStr.compare("Terrain"))
 					{
 						entry->QueryStringAttribute("Name", &name);
@@ -167,6 +180,17 @@ namespace Wrench
 		if (terrain[name])
 			return terrain[name];
 		return NULL;
+	};
+
+	Font *ContentManager::AddFont(string name, Font *f)
+	{
+		fonts[name] = f;
+		return GetFont(name);
+	};
+
+	Font *ContentManager::GetFont(string name)
+	{
+		return fonts[name];
 	};
 
 }
