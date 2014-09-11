@@ -17,6 +17,7 @@ protected:
 	bool direction;
 
 	list<ModelNode*> crystals;
+	ModelNode *logo;
 
 public:
 	MainMenuScene();

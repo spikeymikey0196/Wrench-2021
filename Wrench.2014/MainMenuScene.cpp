@@ -1,16 +1,20 @@
 #include "MainMenuScene.h"
 #include "DemoScene.h"
+#include "LevelSelectScene.h"
 
 MainMenuScene::MainMenuScene()
 {
 	viewport = new Viewport(0, 0, Wrench::ScreenWidth(), Wrench::ScreenHeight(), 0.1f, 1000.0f);
 	camera = new Camera(Vector3(0, 0, 25), Vector3::Zero(), Vector3(0, 1, 0));
 
-	WidgetNode *w = new WidgetNode(this, Vector3(), Vector3(), 1.0f, new ModelObj("./Content/Models/NewGame/NewGame.obj", new Texture(Color4(1,1,1,1),4,4)));
+	WidgetNode *n = new WidgetNode(this, Vector3(-8, -2.5f, 0), Vector3(), 1.0f, new ModelObj("./Content/Models/NewGame/NewGame.obj", new Texture(Color4(1,1,1,1),4,4)));
+	WidgetNode *l = new WidgetNode(this, Vector3(-8, -5.0f, 0), Vector3(), 1.0f, new ModelObj("./Content/Models/LoadGame/LoadGame.obj", new Texture(Color4(1, 1, 1, 1), 4, 4)));
+	WidgetNode *s = new WidgetNode(this, Vector3(-8, -7.5f, 0), Vector3(), 1.0f, new ModelObj("./Content/Models/Settings/Settings.obj", new Texture(Color4(1, 1, 1, 1), 4, 4)));
 
-	w->SetOnClick([this](WidgetNode *owner, Node *caller, const Vector2 &mousePos)
+
+	n->SetOnClick([this](WidgetNode *owner, Node *caller, const Vector2 &mousePos)
 	{
-		Wrench::PushScene(new DemoScene());
+		Wrench::PushScene(new LevelSelectScene());
 	});
 
 	textNode = NULL;
@@ -18,12 +22,13 @@ MainMenuScene::MainMenuScene()
 
 	for (int a = 0; a < 3; a++)
 	{
-		ModelNode *c = new ModelNode(this, Vector3(-3, -a * 3, -5), Vector3(), 1.0f, new ModelObj("./Content/Models/IcoSphere/IcoSphere.obj", new Texture(Color4(0, 0, 1, 1), 4, 4)));
+		ModelNode *c = new ModelNode(this, Vector3(-13, -a * 3 - 3.0f, -5), Vector3(), 1.0f, new ModelObj("./Content/Models/IcoSphere/IcoSphere.obj", new Texture(Color4(0, 0, 1, 1), 4, 4)));
 		AddStaticProp(c);
 		crystals.push_back(c);
 	}
 
-
+	logo = new ModelNode(this, Vector3(-10, 8, -5), Vector3(), 3.0f, new ModelObj("./Content/Models/Wrench/Wrench.obj", new Texture(Color4(0, 1, 0, 1), 4, 4)));
+	AddStaticProp(logo);
 
 	//temp
 	glEnable(GL_LIGHTING);
@@ -44,7 +49,9 @@ MainMenuScene::MainMenuScene()
 
 	AddRenderPass(camera, viewport, NULL);
 
-	this->AddWidget(w);
+	this->AddWidget(n);
+	this->AddWidget(l);
+	this->AddWidget(s);
 };
 
 void MainMenuScene::Update(unsigned int Delta)
@@ -70,6 +77,10 @@ void MainMenuScene::Update(unsigned int Delta)
 		o.y += 0.05f;
 		it->GetTransform()->SetOrientation(o);
 	}
+
+	Vector3 r = logo->GetTransform()->Orientation();
+	r.y += 0.01f;
+	logo->GetTransform()->SetOrientation(r);
 };
 
 void MainMenuScene::KeyDown(int KeyID)
