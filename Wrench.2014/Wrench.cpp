@@ -10,10 +10,15 @@ extern void Windows_SetWindowTitle(const char *text);
 
 namespace Wrench
 {
+	int _windowWidth = 0;
+	int _windowHeight = 1;
 	stack<Scene *> sceneStack;
 
 	void Init(int width, int height)
 	{
+		_windowWidth = width;
+		_windowHeight = height;
+
 		SDLNet_Init();
 	};
 
@@ -63,7 +68,18 @@ namespace Wrench
 			(
 			filename,
 			SOIL_SAVE_TYPE_BMP,
-			0, 0, 800, 600		//temp
+			0, 0, ScreenWidth(), ScreenHeight()
 			);
 	};
+
+	int ScreenWidth()
+	{
+		return _windowWidth;
+	};
+
+	int ScreenHeight()
+	{
+		return _windowHeight;
+	};
+
 }

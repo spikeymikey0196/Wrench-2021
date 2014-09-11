@@ -88,7 +88,7 @@ DemoScene::DemoScene()
 
 	Load("./Content/Levels/Test.xml");
 
-	viewport = Viewport(0, 0, 800, 600, 0.1f, 1000);
+	viewport = Viewport(0, 0, Wrench::ScreenWidth(), Wrench::ScreenHeight(), 0.1f, 1000);
 	player = new PlayerNode(this, Vector3(125.0f, 30.0f, 80.0f), Vector3::Zero(), 1.0f, content->GetModel("Sora"));
 	//player = new PlayerNode(this, Vector3(125.0f, 30.0f, 80.0f), Vector3::Zero(), 0.1f, pmd);
 	//skybox = new SkyBox(this, player);

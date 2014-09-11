@@ -2,15 +2,21 @@
 #define MAINMENUSCENE_H
 
 #include "Wrench.h"
+#include <list>
 
+using namespace std;
 using namespace Wrench;
 
 class MainMenuScene : public Scene
 {
 protected:
-	UI *ui;
 	Viewport *viewport;
 	Camera *camera;
+
+	WidgetNode *textNode;
+	bool direction;
+
+	list<ModelNode*> crystals;
 
 public:
 	MainMenuScene();
@@ -18,6 +24,7 @@ public:
 	virtual void KeyUp(int KeyID);
 	virtual void MouseButtonDown(float x, float y);
 	virtual void MouseMotion(float x, float y);
+	virtual void Update(unsigned int Delta);
 };
 
 #endif

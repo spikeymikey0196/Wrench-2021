@@ -253,9 +253,14 @@ LRESULT CALLBACK WndProc(   HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
         return 0;
         break;
 
-	case WM_SIZING:
-		//todo
+	case WM_SIZE:
+		g.width = LOWORD(lparam);
+		g.height = HIWORD(lparam);
+
+		if (scene) scene->Resize(g.width, g.height);
 		break;
+
+	default: break;
     }
  
     return DefWindowProc( hwnd, message, wparam, lparam );

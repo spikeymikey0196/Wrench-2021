@@ -62,6 +62,8 @@ namespace Wrench
 		virtual void RemoveWidget(WidgetNode *widget);
 		virtual void RemoveStaticProp(ModelNode *prop);
 		virtual void RemoveUnit(PhysicsNode *unit);
+
+		virtual void Resize(int nWidth, int nHeight);
 	};
 }
 

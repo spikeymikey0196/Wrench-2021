@@ -171,4 +171,8 @@ namespace Wrench
 		units.remove(unit);
 	};
 
+	void Scene::Resize(int nWidth, int nHeight)
+	{
+		//blank
+	};
 }

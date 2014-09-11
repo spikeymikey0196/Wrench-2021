@@ -62,6 +62,9 @@ namespace Wrench
 	unsigned int GetTicks();
 	void SetWindowTitle(const char *text);
 	void TakeScreenshot(const char *filename);
+
+	int ScreenWidth();
+	int ScreenHeight();
 }
 
 #endif
