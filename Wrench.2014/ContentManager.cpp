@@ -3,6 +3,8 @@
 #include "MissingModel.h"
 #include "ModelObj.h"
 #include "Utils.h"
+#include "BasicMaterial.h"
+#include "TerrainMaterial.h"
 
 #include <iterator>
 
@@ -83,33 +85,16 @@ namespace Wrench
 					}
 					else if (!valueStr.compare("Terrain"))
 					{
-						entry->QueryStringAttribute("Name", &name);
-						string t0 = "";
-						string t1 = "";
-						string t2 = "";
-						string t3 = "";
-						string controller = "";
 						string heightmap = "";
+						Material *m = NULL;
 
 						XmlLoop(entry, tEntry)
 						{
 							valueStr = tEntry->ValueStr();
 
-							if (!valueStr.compare("Terrain"))
-								controller = tEntry->GetText();
-							else if (!valueStr.compare("Texture"))
+							if (!valueStr.compare("Material"))
 							{
-								int id = 0;
-								tEntry->QueryIntAttribute("ID", &id);
-
-								switch (id)
-								{
-								case 0: t0 = tEntry->GetText(); break;
-								case 1: t1 = tEntry->GetText(); break;
-								case 2: t2 = tEntry->GetText(); break;
-								case 3: t3 = tEntry->GetText(); break;
-								default: break;
-								}
+								m = GetMaterial(string(tEntry->GetText()));
 							}
 							else if (!valueStr.compare("Heightmap"))
 							{
@@ -118,7 +103,83 @@ namespace Wrench
 							else {}
 						}
 
-						AddTerrain(name, new Terrain(heightmap, GetTexture(controller), GetTexture(t0), GetTexture(t1), GetTexture(t2), GetTexture(t3)));
+						AddTerrain(name, new Terrain(heightmap, m));
+					}
+					else if (!valueStr.compare("Material"))
+					{
+						Texture *textures[8] = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+
+						XmlLoop(entry, tEntry)
+						{
+							valueStr = tEntry->ValueStr();
+
+							if (!valueStr.compare("Texture"))
+							{
+								int ID = 0;
+								string n = "";
+
+								tEntry->QueryIntAttribute("ID", &ID);
+								n = tEntry->GetText();
+
+								textures[ID] = GetTexture(n);
+							}
+						}
+
+						AddMaterial(name, new Material(textures[0], textures[1], textures[2], textures[3], textures[4], textures[5], textures[6], textures[7]));
+					}
+					else if (!valueStr.compare("BasicMaterial"))
+					{
+						Texture *dTex = NULL;
+						Texture *nTex = NULL;
+						Texture *sTex = NULL;
+
+						XmlLoop(entry, tEntry)
+						{
+							valueStr = tEntry->ValueStr();
+
+							if (!valueStr.compare(string("Diffuse")))
+								dTex = GetTexture(tEntry->GetText());
+							else if (!valueStr.compare(string("Norml")))
+								nTex = GetTexture(tEntry->GetText());
+							else if(!valueStr.compare(string("Specular")))
+								sTex = GetTexture(tEntry->GetText());
+							else{}
+						}
+
+						AddMaterial(name, new BasicMaterial(dTex, nTex, sTex));
+					}
+					else if (!valueStr.compare("TerrainMaterial"))
+					{
+						Texture *controller = NULL;
+						Texture *diffuse[4] = { NULL, NULL, NULL, NULL };
+
+						XmlLoop(entry, tEntry)
+						{
+							valueStr = tEntry->ValueStr();
+
+							if (!valueStr.compare("Diffuse"))
+							{
+								int ID = 0;
+								tEntry->QueryIntAttribute("ID", &ID);
+
+								diffuse[ID] = GetTexture(string(tEntry->GetText()));
+
+								if (diffuse[ID])
+								{
+									diffuse[ID]->Bind(0);
+									glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+									glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+									diffuse[ID]->Unbind(0);
+								}
+							}
+							else if (!valueStr.compare("Controller"))
+							{
+								controller = GetTexture(string(tEntry->GetText()));
+							}
+							else{}
+						}
+
+						AddMaterial(name, new TerrainMaterial(diffuse[0], diffuse[1], diffuse[2], diffuse[3], controller));
 					}
 					else{}
 				}
@@ -191,6 +252,17 @@ namespace Wrench
 	Font *ContentManager::GetFont(string name)
 	{
 		return fonts[name];
+	};
+
+	Material *ContentManager::AddMaterial(string name, Material *m)
+	{
+		materials[name] = m;
+		return GetMaterial(name);
+	};
+
+	Material *ContentManager::GetMaterial(string name)
+	{
+		return materials[name];
 	};
 
 }

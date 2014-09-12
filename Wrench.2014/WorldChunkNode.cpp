@@ -32,10 +32,10 @@ namespace Wrench
 		//parse stuff
 	};
 
-	WorldChunkNode::WorldChunkNode(Scene *nScene, const Vector3 &nPosition, int nWidth, int nLength, float waterHeight, const string &heightMapFile, Texture *controllerTex, Texture *terrainTex0, Texture *terrainTex1, Texture *terrainTex2, Texture *terrainTex3, Texture *waterTex)
+	WorldChunkNode::WorldChunkNode(Scene *nScene, const Vector3 &nPosition, int nWidth, int nLength, float waterHeight, const string &heightMapFile, Material *nMaterial, Texture *waterTex)
 		: Node(nScene, nPosition, Vector3::Zero(), 1.0f)
 	{
-		terrain = new Terrain(nWidth, nLength, controllerTex, terrainTex0, terrainTex1, terrainTex2, terrainTex3);
+		terrain = new Terrain(nWidth, nLength, nMaterial);
 		water = new Water(nWidth, nLength, waterHeight, waterTex);
 
 		if (terrain) terrain->SetupVBO();

@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "Terrain.h"
 #include "Font.h"
+#include "Material.h"
 
 #include <map>
 #include <string>
@@ -22,6 +23,7 @@ namespace Wrench
 		map<string, Shader*> shaders;
 		map<string, Terrain *> terrain;
 		map<string, Font *> fonts;
+		map<string, Material *> materials;
 
 		Texture *blank;
 
@@ -44,6 +46,9 @@ namespace Wrench
 
 		Font *AddFont(string name, Font *f);
 		Font *GetFont(string name);
+
+		Material *AddMaterial(string name, Material *m);
+		Material *GetMaterial(string name);
 	};
 }
 

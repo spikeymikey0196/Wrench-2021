@@ -14,11 +14,11 @@ namespace Wrench
 		shader = Shader::DefaultTerrain();
 
 		shader->Bind();
-		tex0 = shader->GetUniform("tex0");
-		tex1 = shader->GetUniform("tex1");
-		tex2 = shader->GetUniform("tex2");
-		tex3 = shader->GetUniform("tex3");
-		tex4 = shader->GetUniform("tex4");
+		unsigned int tex0 = shader->GetUniform("tex0");
+		unsigned int tex1 = shader->GetUniform("tex1");
+		unsigned int tex2 = shader->GetUniform("tex2");
+		unsigned int tex3 = shader->GetUniform("tex3");
+		unsigned int tex4 = shader->GetUniform("tex4");
 		
 		glUniform1i(tex0, 0);
 		glUniform1i(tex1, 1);
@@ -34,19 +34,15 @@ namespace Wrench
 		CreateBlank(nWidth, nLength);
 	};
 
-	Terrain::Terrain(int nWidth, int nLength, Texture *nController, Texture *tex0, Texture *tex1, Texture *tex2, Texture *tex3)
+	Terrain::Terrain(int nWidth, int nLength, Material *nMaterial)
 		: Terrain()
 	{
 		CreateBlank(nWidth, nLength);
 
-		controller = nController;
-		textures[0] = tex0;
-		textures[1] = tex1;
-		textures[2] = tex2;
-		textures[3] = tex3;
+		material = nMaterial;
 	};
 
-	Terrain::Terrain(const string &heightmap, Texture *nController, Texture *tex0, Texture *tex1, Texture *tex2, Texture *tex3)
+	Terrain::Terrain(const string &heightmap, Material *nMaterial)
 		: Terrain()
 	{
 		int w, l, channels;
@@ -75,11 +71,7 @@ namespace Wrench
 
 		CalculateNormals();
 
-		controller = nController;
-		textures[0] = tex0;
-		textures[1] = tex1;
-		textures[2] = tex2;
-		textures[3] = tex3;
+		material = nMaterial;
 
 		delete[] ht_map;
 	};
@@ -205,31 +197,9 @@ namespace Wrench
 	void Terrain::Render()
 	{
 		shader->Bind();
-
-		controller->Bind(0);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		textures[0]->Bind(1);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		textures[1]->Bind(2);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		textures[2]->Bind(3);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		textures[3]->Bind(4);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
+		material->Bind();
 		vertexArray.Render();
-
-		textures[3]->Bind(4);
-		textures[2]->Bind(3);
-		textures[1]->Bind(2);
-		textures[0]->Bind(1);
-		controller->Bind(0);
-
+		material->Unbind();
 		shader->Unbind();
 	};
 

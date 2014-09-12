@@ -40,42 +40,21 @@
 	<Texture Name="Terrain_2" Filename="./Content/Textures/Terrain_2.png" />
 	<Texture Name="Terrain_3" Filename="./Content/Textures/Terrain_3.png" />
 	
+	
+	<TerrainMaterial Name="DemoTerrain">
+		<Controller>Terrain_3</Controller>
+		<Diffuse ID="0">Ground0</Diffuse>
+		<Diffuse ID="1">Ground1</Diffuse>
+		<Diffuse ID="2">Ground2</Diffuse>
+		<Diffuse ID="3">Ground3</Diffuse>
+	</TerrainMaterial>
+	
+	
 	<!--- Water Texture -->
 	<Texture Name="Water" Filename="./Content/Textures/Water.png" />
 	
-	<Terrain Name="Terrain_0">
-		<Terrain>Terrain_0</Terrain>
-		<Texture ID="0">Ground0</Texture>
-		<Texture ID="1">Ground1</Texture>
-		<Texture ID="2">Ground2</Texture>
-		<Texture ID="3">Ground3</Texture>
-		<Heightmap>./Content/Textures/0.png</Heightmap>
-	</Terrain>
-	
-	<Terrain Name="Terrain_1">
-		<Terrain>Terrain_1</Terrain>
-		<Texture ID="0">Ground0</Texture>
-		<Texture ID="1">Ground1</Texture>
-		<Texture ID="2">Ground2</Texture>
-		<Texture ID="3">Ground3</Texture>
-		<Heightmap>./Content/Textures/1.png</Heightmap>
-	</Terrain>
-	
-	<Terrain Name="Terrain_2">
-		<Terrain>Terrain_2</Terrain>
-		<Texture ID="0">Ground0</Texture>
-		<Texture ID="1">Ground1</Texture>
-		<Texture ID="2">Ground2</Texture>
-		<Texture ID="3">Ground3</Texture>
-		<Heightmap>./Content/Textures/2.png</Heightmap>
-	</Terrain>
-	
 	<Terrain Name="Terrain_3">
-		<Terrain>Terrain_3</Terrain>
-		<Texture ID="0">Ground0</Texture>
-		<Texture ID="1">Ground1</Texture>
-		<Texture ID="2">Ground2</Texture>
-		<Texture ID="3">Ground3</Texture>
+		<Material>DemoTerrain</Material>
 		<Heightmap>./Content/Textures/test.png</Heightmap>
 	</Terrain>
 </Content>

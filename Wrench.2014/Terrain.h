@@ -7,6 +7,7 @@
 #include "BoundingBox.h"
 #include "Matrix.h"
 #include "Waypoint.h"
+#include "Material.h"
 
 namespace Wrench
 {
@@ -18,15 +19,8 @@ namespace Wrench
 		int width;
 		int length;
 
-		unsigned int tex0;
-		unsigned int tex1;
-		unsigned int tex2;
-		unsigned int tex3;
-		unsigned int tex4;
-		
 		Shader *shader;
-		Texture *controller;
-		Texture *textures[4];
+		Material *material;
 
 		VertexArray vertexArray;
 
@@ -35,8 +29,8 @@ namespace Wrench
 	public:
 		Terrain();
 		Terrain(int nWidth, int nLength);
-		Terrain(int nWidth, int nLength, Texture *nController, Texture *tex0, Texture *tex1, Texture *tex2, Texture *tex3);
-		Terrain(const string &heightmap, Texture *nController, Texture *tex0, Texture *tex1, Texture *tex2, Texture *tex3);
+		Terrain(int nWidth, int nLength, Material *nMaterial);
+		Terrain(const string &heightmap, Material *nMaterial);
 
 		void CreateBlank(int nWidth, int nLength);
 		void SetHeight(int x, int z, float vertexHeight);

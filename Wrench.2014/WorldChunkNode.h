@@ -18,7 +18,7 @@ namespace Wrench
 		WorldChunkNode(Scene *nScene);
 		WorldChunkNode(Scene *nScene, Terrain *nTerrain, Water *nWater);
 		WorldChunkNode(Scene *nScene, TiXmlElement *entry);
-		WorldChunkNode(Scene *nScene, const Vector3 &nPosition, int nWidth, int nLength, float waterHeight, const string &heightMapFile, Texture *controllerTex, Texture *terrainTex0, Texture *terrainTex1, Texture *terrainTex2, Texture *terrainTex3, Texture *waterTex);
+		WorldChunkNode(Scene *nScene, const Vector3 &nPosition, int nWidth, int nLength, float waterHeight, const string &heightMapFile, Material *nMaterial, Texture *waterTex);
 		WorldChunkNode(Scene *nScene, const Vector3 &nPosition, Terrain *nTerrain, Water *nWater);
 		WorldChunkNode(Scene *nScene, const Vector3 &nPosition, Terrain *nTerrain, float waterHeight, Texture *waterTexture);
 
