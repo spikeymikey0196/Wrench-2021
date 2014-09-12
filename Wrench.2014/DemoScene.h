@@ -28,7 +28,7 @@ protected:
 	void Load(const char *filename);
 
 public:
-	DemoScene();
+	DemoScene(const char *levelName);
 	virtual void Draw();
 	virtual void KeyDown(int KeyID);
 	virtual void KeyUp(int KeyID);

@@ -52,6 +52,8 @@ MainMenuScene::MainMenuScene()
 	this->AddWidget(n);
 	this->AddWidget(l);
 	this->AddWidget(s);
+
+	BasicShader::Get()->Bind();
 };
 
 void MainMenuScene::Update(unsigned int Delta)

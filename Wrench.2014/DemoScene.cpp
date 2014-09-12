@@ -23,7 +23,7 @@ using namespace std;
 // * UI button, slider, checkbox, controller
 // * FPS counter
 
-DemoScene::DemoScene()
+DemoScene::DemoScene(const char *levelName)
 {
 	content->LoadFile("./Content/Content.xml");
 	

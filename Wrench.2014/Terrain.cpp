@@ -12,11 +12,20 @@ namespace Wrench
 		vertexArray = VertexArray(VA_INDICES);
 
 		shader = Shader::DefaultTerrain();
+
+		shader->Bind();
 		tex0 = shader->GetUniform("tex0");
 		tex1 = shader->GetUniform("tex1");
 		tex2 = shader->GetUniform("tex2");
 		tex3 = shader->GetUniform("tex3");
 		tex4 = shader->GetUniform("tex4");
+		
+		glUniform1i(tex0, 0);
+		glUniform1i(tex1, 1);
+		glUniform1i(tex2, 2);
+		glUniform1i(tex3, 3);
+		glUniform1i(tex4, 4);
+		shader->Unbind();
 	};
 
 	Terrain::Terrain(int nWidth, int nLength)
@@ -196,12 +205,6 @@ namespace Wrench
 	void Terrain::Render()
 	{
 		shader->Bind();
-
-		glUniform1i(tex0, 0);
-		glUniform1i(tex1, 1);
-		glUniform1i(tex2, 2);
-		glUniform1i(tex3, 3);
-		glUniform1i(tex4, 4);
 
 		controller->Bind(0);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);

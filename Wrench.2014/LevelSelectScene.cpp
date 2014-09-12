@@ -16,7 +16,7 @@ LevelSelectScene::LevelSelectScene()
 
 	p1->SetOnClick([this](WidgetNode *owner, Node *caller, const Vector2 &mousePos)
 	{
-		Wrench::PushScene(new DemoScene());
+		Wrench::PushScene(new DemoScene("Island"));
 	});
 
 	AddWidget(p1);

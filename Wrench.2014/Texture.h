@@ -21,6 +21,10 @@ namespace Wrench
 		float pixelHeight;
 
 		static Texture *missing;
+
+		static Texture *diffuseMap;
+		static Texture *normalMap;
+		static Texture *specularMap;
 	
 	public:
 		Texture();
@@ -45,6 +49,10 @@ namespace Wrench
 		virtual float PixelHeight();
 
 		static Texture *Missing();
+		static Texture *DefaultDiffuseMap();
+		static Texture *DefaultNormalMap();
+		static Texture *DefaultSpecularMap();
+
 	};
 }
 

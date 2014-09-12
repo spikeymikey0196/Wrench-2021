@@ -1,6 +1,8 @@
 #ifndef WRENCH_H
 #define WRENCH_H
 
+#include "BasicShader.h"
+#include "BasicMaterial.h"
 #include "BoundingBox.h"
 #include "BoundingSphere.h"
 #include "Camera.h"
@@ -11,6 +13,7 @@
 #include "FollowCamera.h"
 #include "Font.h"
 #include "Light.h"
+#include "Material.h"
 #include "Matrix.h"
 #include "MissingModel.h"
 #include "Model.h"
@@ -31,6 +34,7 @@
 #include "TCPSocket.h"
 #include "TCPSocketSet.h"
 #include "Terrain.h"
+#include "TerrainMaterial.h"
 #include "Texture.h"
 #include "Transform.h"
 #include "UI.h"

@@ -6,6 +6,9 @@ using namespace std;
 namespace Wrench
 {
 	Texture *Texture::missing = NULL;
+	Texture *Texture::diffuseMap = NULL;
+	Texture *Texture::normalMap = NULL;
+	Texture *Texture::specularMap = NULL;
 
 	Texture::Texture()
 	{
@@ -213,5 +216,27 @@ namespace Wrench
 		}
 
 		return missing;
-	}
+	};
+
+	Texture *Texture::DefaultDiffuseMap()
+	{
+		if (!diffuseMap)
+			diffuseMap = new Texture(Color4(1, 1, 1, 1), 1, 1);
+		return diffuseMap;
+	};
+
+	Texture *Texture::DefaultNormalMap()
+	{
+		if (!normalMap)
+			normalMap = new Texture(Color4(0.5, 0.5, 0.5, 1.0),1,1);
+		return normalMap;
+	};
+
+	Texture *Texture::DefaultSpecularMap()
+	{
+		if (!specularMap)
+			specularMap = new Texture(Color4(0, 0, 0, 1), 1, 1);
+		return specularMap;
+	};
+
 }
