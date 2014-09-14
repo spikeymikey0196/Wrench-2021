@@ -303,14 +303,6 @@ void DemoScene::MouseButtonDown(float x, float y)
 
 void DemoScene::MouseMotion(float x, float y)
 {
-	/*
-	Node *closestNode = Ray::FromScreenCoordinates(x, y, *camera, viewport).ClosestIntersects(widgets);
-
-	if (closestNode)
-		((WidgetNode*)closestNode)->OnHover(player, Vector2(x, 600-y));
-		*/
-
-
 	float closestDistance = FLT_MAX;
 	Vector3 closestPos;
 	Ray r = Ray::FromScreenCoordinates(x, y, *camera, viewport);

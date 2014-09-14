@@ -36,7 +36,9 @@ namespace Wrench
 		: Node(nScene, nPosition, Vector3::Zero(), 1.0f)
 	{
 		terrain = new Terrain(nWidth, nLength, nMaterial);
-		water = new Water(nWidth, nLength, waterHeight, waterTex);
+
+		if (waterHeight > 0.0f)
+			water = new Water(nWidth, nLength, waterHeight, waterTex);
 
 		if (terrain) terrain->SetupVBO();
 		if (water) water->SetupVBO();
