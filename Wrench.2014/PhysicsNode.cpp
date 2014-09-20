@@ -52,7 +52,7 @@ namespace Wrench
 		velocity = nVelocity;
 	};
 
-	void PhysicsNode::CollideProps(list<Node *> *props)
+	void PhysicsNode::CollideNodes(list<Node *> *props)
 	{
 		for (auto it : *props)
 		{

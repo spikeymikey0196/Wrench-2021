@@ -26,7 +26,7 @@ namespace Wrench
 		Vector3 Velocity();
 		void SetVelocity(const Vector3 &nVelocity);
 
-		virtual void CollideProps(list<Node *> *props);
+		virtual void CollideNodes(list<Node *> *props);
 		virtual void CollideTerrain(list<WorldChunkNode*> *worldChunks);
 	};
 }
