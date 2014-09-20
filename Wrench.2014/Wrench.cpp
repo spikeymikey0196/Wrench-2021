@@ -102,6 +102,27 @@ namespace Wrench
 		return Vector2(pt.x, pt.y);
 	};
 
+	void SetMousePos(int x, int y)
+	{
+		POINT pt;
+		pt.x = x;
+		pt.y = y;
+
+		ClientToScreen(g.hwnd, &pt);
+		SetCursorPos(pt.x, pt.y);
+	};
+
+	void SetMousePos(const Vector2 &pos)
+	{
+		POINT pt;
+		pt.x = pos.x;
+		pt.y = pos.y;
+
+		ClientToScreen(g.hwnd, &pt);
+		SetCursorPos(pt.x, pt.y);
+	};
+
+
 	bool KeyState(int KeyID)
 	{
 		return (GetKeyState(KeyID) & (1 << 8)) ? true : false;

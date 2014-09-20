@@ -73,6 +73,8 @@ namespace Wrench
 	int ScreenHeight();
 
 	Vector2 MousePos();
+	void SetMousePos(int x, int y);
+	void SetMousePos(const Vector2 &pos);
 
 	bool KeyState(int KeyID);
 }

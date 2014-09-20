@@ -84,8 +84,8 @@ void MainMenuScene::Update(unsigned int Delta)
 	r.y += 0.01f;
 	logo->GetTransform()->SetOrientation(r);
 
-	if (KeyState('A'))
-		exit(0);
+	//if (KeyState('A'))
+	//	exit(0);
 };
 
 void MainMenuScene::KeyDown(int KeyID)
@@ -93,7 +93,7 @@ void MainMenuScene::KeyDown(int KeyID)
 	int a = GetKeyState('A');
 
 	if (a & (1 << 8))
-		int b = a;
+		SetMousePos(100, 200);
 };
 
 void MainMenuScene::KeyUp(int KeyID)
