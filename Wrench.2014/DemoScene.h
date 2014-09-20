@@ -25,6 +25,10 @@ protected:
 
 	list<UIElement *> tempElements;
 
+	list<Node*> staticProps;
+	list<Node*> widgets;
+	list<Node*> units;
+
 	void Load(const char *filename);
 
 public:
@@ -34,6 +38,14 @@ public:
 	virtual void KeyUp(int KeyID);
 	virtual void MouseButtonDown(float x, float y);
 	virtual void MouseMotion(float x, float y);
+
+	virtual WidgetNode *AddWidget(WidgetNode *widget);
+	virtual ModelNode *AddStaticProp(ModelNode *prop);
+	virtual PhysicsNode *AddUnit(PhysicsNode *unit);
+
+	virtual void RemoveWidget(WidgetNode *widget);
+	virtual void RemoveStaticProp(ModelNode *prop);
+	virtual void RemoveUnit(PhysicsNode *unit);
 };
 
 #endif

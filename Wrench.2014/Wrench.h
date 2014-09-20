@@ -12,6 +12,7 @@
 #include "ContentManager.h"
 #include "FollowCamera.h"
 #include "Font.h"
+#include "KeyboardState.h"
 #include "Light.h"
 #include "Material.h"
 #include "Matrix.h"
@@ -19,6 +20,7 @@
 #include "Model.h"
 #include "ModelNode.h"
 #include "ModelObj.h"
+#include "MouseState.h"
 #include "Node.h"
 #include "Packet.h"
 #include "Plane.h"
@@ -71,6 +73,8 @@ namespace Wrench
 	int ScreenHeight();
 
 	Vector2 MousePos();
+
+	bool KeyState(int KeyID);
 }
 
 #endif

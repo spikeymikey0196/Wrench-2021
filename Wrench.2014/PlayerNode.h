@@ -21,7 +21,7 @@ enum PlayerKeys
 class PlayerNode : public PhysicsNode
 {
 protected:
-	int keys[7];
+	KeyboardState prevKBS;
 	Range<int> health;
 
 public:

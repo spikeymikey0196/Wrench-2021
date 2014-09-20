@@ -104,6 +104,7 @@
     <ClCompile Include="HTTPTexture.cpp" />
     <ClCompile Include="image_DXT.c" />
     <ClCompile Include="image_helper.c" />
+    <ClCompile Include="KeyboardState.cpp" />
     <ClCompile Include="LevelSelectScene.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
@@ -115,6 +116,7 @@
     <ClCompile Include="ModelNode.cpp" />
     <ClCompile Include="ModelObj.cpp" />
     <ClCompile Include="ModelPMD.cpp" />
+    <ClCompile Include="MouseState.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Packet.cpp" />
     <ClCompile Include="Plane.cpp" />
@@ -187,6 +189,7 @@
     <ClInclude Include="HTTPTexture.h" />
     <ClInclude Include="image_DXT.h" />
     <ClInclude Include="image_helper.h" />
+    <ClInclude Include="KeyboardState.h" />
     <ClInclude Include="LevelSelectScene.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="MainMenuScene.h" />
@@ -197,6 +200,7 @@
     <ClInclude Include="ModelNode.h" />
     <ClInclude Include="ModelObj.h" />
     <ClInclude Include="ModelPMD.h" />
+    <ClInclude Include="MouseState.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Packet.h" />
     <ClInclude Include="Plane.h" />

@@ -312,6 +312,12 @@
     <ClCompile Include="TerrainMaterial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MouseState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tinyxml.h">
@@ -556,6 +562,12 @@
     </ClInclude>
     <ClInclude Include="TerrainMaterial.h">
       <Filter>Header Files\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseState.h">
+      <Filter>Header Files\Datatypes</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardState.h">
+      <Filter>Header Files\Datatypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

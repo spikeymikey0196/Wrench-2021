@@ -38,13 +38,7 @@ namespace Wrench
 			for (auto it : worldChunks)
 				it->RenderTerrain(m);
 
-			for (auto it : staticProps)
-				it->Render(m);
-
-			for (auto it : widgets)
-				it->Render(m);
-
-			for (auto it : units)
+			for (auto it : nodes)
 				it->Render(m);
 
 			for (auto it : worldChunks)
@@ -68,11 +62,9 @@ namespace Wrench
 
 	void Scene::Update(unsigned int Delta)
 	{
-		for (auto it : units)
+		for (auto it : nodes)
 		{
-			((PhysicsNode*)it)->Update(Delta);
-			((PhysicsNode*)it)->CollideProps(&staticProps);
-			((PhysicsNode*)it)->CollideTerrain(&worldChunks);
+			it->Update(Delta);
 		}
 	};
 
@@ -133,42 +125,23 @@ namespace Wrench
 		return chunk;
 	};
 
-	WidgetNode *Scene::AddWidget(WidgetNode *widget)
-	{
-		widgets.push_back((Node*)widget);
-		return widget;
-	};
 
-	ModelNode *Scene::AddStaticProp(ModelNode *prop)
-	{
-		staticProps.push_back(prop);
-		return prop;
-	};
-
-	PhysicsNode *Scene::AddUnit(PhysicsNode *unit)
-	{
-		units.push_back(unit);
-		return unit;
-	};
 
 	void Scene::RemoveWorldChunk(WorldChunkNode *chunk)
 	{
 		worldChunks.remove(chunk);
 	};
 
-	void Scene::RemoveWidget(WidgetNode *widget)
+	Node *Scene::AddNode(Node *n)
 	{
-		widgets.remove((Node*)widget);
+		if (n)
+			nodes.push_back(n);
+		return n;
 	};
 
-	void Scene::RemoveStaticProp(ModelNode *prop)
+	void Scene::RemoveNode(Node *n)
 	{
-		staticProps.remove(prop);
-	};
-
-	void Scene::RemoveUnit(PhysicsNode *unit)
-	{
-		units.remove(unit);
+		nodes.remove(n);
 	};
 
 	void Scene::Resize(int nWidth, int nHeight)

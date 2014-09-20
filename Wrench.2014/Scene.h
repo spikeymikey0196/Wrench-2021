@@ -29,9 +29,7 @@ namespace Wrench
 
 		Node *skybox;
 		list<WorldChunkNode*> worldChunks;
-		list<Node*> staticProps;
-		list<Node*> widgets;
-		list<Node*> units;
+		list<Node *> nodes;
 
 		list<tuple<Camera*, Viewport*, UI*>> renderPasses;
 
@@ -54,14 +52,10 @@ namespace Wrench
 		virtual void ClearRenderPasses();
 
 		virtual WorldChunkNode *AddWorldChunk(WorldChunkNode *chunk);
-		virtual WidgetNode *AddWidget(WidgetNode *widget);
-		virtual ModelNode *AddStaticProp(ModelNode *prop);
-		virtual PhysicsNode *AddUnit(PhysicsNode *unit);
-
 		virtual void RemoveWorldChunk(WorldChunkNode *chunk);
-		virtual void RemoveWidget(WidgetNode *widget);
-		virtual void RemoveStaticProp(ModelNode *prop);
-		virtual void RemoveUnit(PhysicsNode *unit);
+
+		virtual Node *AddNode(Node *n);
+		virtual void RemoveNode(Node *n);
 
 		virtual void Resize(int nWidth, int nHeight);
 	};

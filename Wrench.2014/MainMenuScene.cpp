@@ -83,11 +83,17 @@ void MainMenuScene::Update(unsigned int Delta)
 	Vector3 r = logo->GetTransform()->Orientation();
 	r.y += 0.01f;
 	logo->GetTransform()->SetOrientation(r);
+
+	if (KeyState('A'))
+		exit(0);
 };
 
 void MainMenuScene::KeyDown(int KeyID)
 {
-	//
+	int a = GetKeyState('A');
+
+	if (a & (1 << 8))
+		int b = a;
 };
 
 void MainMenuScene::KeyUp(int KeyID)
@@ -132,4 +138,45 @@ void MainMenuScene::MouseMotion(float x, float y)
 			textNode = NULL;
 		}
 	}
+};
+
+
+
+WidgetNode *MainMenuScene::AddWidget(WidgetNode *widget)
+{
+	widgets.push_back((Node*)widget);
+	this->AddNode(widget);
+	return widget;
+};
+
+ModelNode *MainMenuScene::AddStaticProp(ModelNode *prop)
+{
+	staticProps.push_back(prop);
+	this->AddNode(prop);
+	return prop;
+};
+
+PhysicsNode *MainMenuScene::AddUnit(PhysicsNode *unit)
+{
+	units.push_back(unit);
+	this->AddNode(unit);
+	return unit;
+};
+
+void MainMenuScene::RemoveWidget(WidgetNode *widget)
+{
+	widgets.remove((Node*)widget);
+	this->RemoveNode(widget);
+};
+
+void MainMenuScene::RemoveStaticProp(ModelNode *prop)
+{
+	staticProps.remove(prop);
+	this->RemoveNode(prop);
+};
+
+void MainMenuScene::RemoveUnit(PhysicsNode *unit)
+{
+	units.remove(unit);
+	this->RemoveNode(unit);
 };

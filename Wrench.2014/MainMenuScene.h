@@ -19,6 +19,10 @@ protected:
 	list<ModelNode*> crystals;
 	ModelNode *logo;
 
+	list<Node*> staticProps;
+	list<Node*> widgets;
+	list<Node*> units;
+
 public:
 	MainMenuScene();
 	virtual void KeyDown(int KeyID);
@@ -26,6 +30,14 @@ public:
 	virtual void MouseButtonDown(float x, float y);
 	virtual void MouseMotion(float x, float y);
 	virtual void Update(unsigned int Delta);
+
+	virtual WidgetNode *AddWidget(WidgetNode *widget);
+	virtual ModelNode *AddStaticProp(ModelNode *prop);
+	virtual PhysicsNode *AddUnit(PhysicsNode *unit);
+
+	virtual void RemoveWidget(WidgetNode *widget);
+	virtual void RemoveStaticProp(ModelNode *prop);
+	virtual void RemoveUnit(PhysicsNode *unit);
 };
 
 #endif

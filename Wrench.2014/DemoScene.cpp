@@ -123,7 +123,7 @@ DemoScene::DemoScene(const char *levelName)
 		AddUnit(c);
 	}
 
-	units.push_back(player);
+	this->AddUnit(player);
 
 
 	terrainCursor = new WidgetNode(this, Vector3::Zero(), Vector3::Zero(), 0.1f, MissingModel::Get());
@@ -332,4 +332,45 @@ void DemoScene::MouseMotion(float x, float y)
 	}
 
 	terrainCursor->GetTransform()->SetPosition(closestPos);
+};
+
+
+
+WidgetNode *DemoScene::AddWidget(WidgetNode *widget)
+{
+	widgets.push_back((Node*)widget);
+	this->AddNode(widget);
+	return widget;
+};
+
+ModelNode *DemoScene::AddStaticProp(ModelNode *prop)
+{
+	staticProps.push_back(prop);
+	this->AddNode(prop);
+	return prop;
+};
+
+PhysicsNode *DemoScene::AddUnit(PhysicsNode *unit)
+{
+	units.push_back(unit);
+	this->AddNode(unit);
+	return unit;
+};
+
+void DemoScene::RemoveWidget(WidgetNode *widget)
+{
+	widgets.remove((Node*)widget);
+	this->RemoveNode(widget);
+};
+
+void DemoScene::RemoveStaticProp(ModelNode *prop)
+{
+	staticProps.remove(prop);
+	this->RemoveNode(prop);
+};
+
+void DemoScene::RemoveUnit(PhysicsNode *unit)
+{
+	units.remove(unit);
+	this->RemoveNode(unit);
 };
