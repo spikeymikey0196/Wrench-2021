@@ -6,6 +6,17 @@
 
 using namespace std;
 
+struct Globals
+{
+	HINSTANCE hInstance;
+	HWND hwnd;
+	HDC   hdc;
+	HGLRC hglrc;
+	int width, height;
+};
+
+extern Globals g;
+
 extern void Windows_SetWindowTitle(const char *text);
 
 namespace Wrench
@@ -82,4 +93,12 @@ namespace Wrench
 		return _windowHeight;
 	};
 
+	Vector2 MousePos()
+	{
+		POINT pt;
+		GetCursorPos(&pt);
+		ScreenToClient(g.hwnd, &pt);
+
+		return Vector2(pt.x, pt.y);
+	}
 }

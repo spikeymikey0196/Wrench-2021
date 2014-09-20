@@ -69,6 +69,8 @@ namespace Wrench
 
 	int ScreenWidth();
 	int ScreenHeight();
+
+	Vector2 MousePos();
 }
 
 #endif
